@@ -1,0 +1,10 @@
+[
+  [
+    "stderr",
+    "test-graphql-https CLI error:\n"
+  ],
+  [
+    "stderr",
+    "  TypeError: Missing URI argument.\n"
+  ]
+]
