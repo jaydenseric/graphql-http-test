@@ -9,7 +9,7 @@
   ],
   [
     "stderr",
-    "  \n  \u001b[31m\u001b[2mlib/testGraphqlHttp.js:35:5\n  async testGraphqlHttp (lib/testGraphqlHttp.js:65:3)\n  async testGraphqlHttpCLI (cli/test-graphql-http.js:21:5)\u001b[39m\u001b[22m\n"
+    "  \n  \u001b[31m\u001b[2mlib/testGraphqlHttp.js:39:5\n  async testGraphqlHttp (lib/testGraphqlHttp.js:69:3)\n  async testGraphqlHttpCLI (cli/test-graphql-http.js:21:5)\u001b[39m\u001b[22m\n"
   ],
   [
     "stdout",
@@ -21,7 +21,7 @@
   ],
   [
     "stderr",
-    "  \n  \u001b[31m\u001b[2mnode_modules/node-fetch/lib/index.js:272:32\n  async lib/testGraphqlHttp.js:48:18\n  async testGraphqlHttp (lib/testGraphqlHttp.js:65:3)\n  async testGraphqlHttpCLI (cli/test-graphql-http.js:21:5)\u001b[39m\u001b[22m\n"
+    "  \n  \u001b[31m\u001b[2mnode_modules/node-fetch/lib/index.js:272:32\n  async lib/testGraphqlHttp.js:52:18\n  async testGraphqlHttp (lib/testGraphqlHttp.js:69:3)\n  async testGraphqlHttpCLI (cli/test-graphql-http.js:21:5)\u001b[39m\u001b[22m\n"
   ],
   [
     "stdout",

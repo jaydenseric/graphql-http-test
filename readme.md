@@ -51,6 +51,14 @@ Tests that a GraphQL server at a given URI implements the [test schema](#constan
 
 **Returns:** Promise&lt;void> — Resolves once tests are complete.
 
+#### Examples
+
+_How to import._
+
+> ```js
+> const { testGraphqlHttp } = require('test-graphql-http')
+> ```
+
 ---
 
 ### constant schema
@@ -58,3 +66,11 @@ Tests that a GraphQL server at a given URI implements the [test schema](#constan
 The test GraphQL schema that a GraphQL server should implement for testing with [`testGraphqlHttp`](#function-testgraphqlhttp).
 
 **Type:** GraphQLSchema
+
+#### Examples
+
+_How to import._
+
+> ```js
+> const { schema } = require('test-graphql-http')
+> ```
