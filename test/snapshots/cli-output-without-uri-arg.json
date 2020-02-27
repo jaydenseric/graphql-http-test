@@ -1,6 +1,4 @@
-[
-  [
-    "stderr",
-    "test-graphql-https CLI error:\n  TypeError: Missing URI argument.\n"
-  ]
-]
+{
+  "stdout": "",
+  "stderr": "test-graphql-https CLI error:\n  TypeError: Missing URI argument.\n"
+}
