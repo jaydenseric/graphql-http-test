@@ -12,12 +12,21 @@ module.exports = function recordChildProcess(childProcess) {
   return new Promise((resolve, reject) => {
     const output = []
 
+    const add = (pipe, data) => {
+      const lastOutput = output[output.length - 1]
+      const text = data.toString()
+      if (lastOutput && lastOutput[0] === pipe)
+        // If the data came through the same pipe as the last data, concatenate
+        lastOutput[1] += text
+      else output.push([pipe, text])
+    }
+
     childProcess.stdout.on('data', data => {
-      output.push(['stdout', data.toString()])
+      add('stdout', data)
     })
 
     childProcess.stderr.on('data', data => {
-      output.push(['stderr', data.toString()])
+      add('stderr', data)
     })
 
     childProcess.once('error', reject)
