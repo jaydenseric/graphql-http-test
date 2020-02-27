@@ -1,30 +1,4 @@
-[
-  [
-    "stdout",
-    "\nTest: \u001b[1mQuery a field that resolves ok.\u001b[22m\n"
-  ],
-  [
-    "stderr",
-    "  \n  \u001b[31mExpected values to be strictly equal:\n  \n  404 !== 200\u001b[39m\n"
-  ],
-  [
-    "stderr",
-    "  \n  \u001b[31m\u001b[2mlib/testGraphqlHttp.js:39:5\n  async testGraphqlHttp (lib/testGraphqlHttp.js:69:3)\n  async testGraphqlHttpCLI (cli/test-graphql-http.js:21:5)\u001b[39m\u001b[22m\n"
-  ],
-  [
-    "stdout",
-    "\nTest: \u001b[1mQuery a field that resolves an error.\u001b[22m\n"
-  ],
-  [
-    "stderr",
-    "  \n  \u001b[31minvalid json response body at <uri>/ reason: Unexpected token N in JSON at position 0\u001b[39m\n"
-  ],
-  [
-    "stderr",
-    "  \n  \u001b[31m\u001b[2mnode_modules/node-fetch/lib/index.js:272:32\n  async lib/testGraphqlHttp.js:52:18\n  async testGraphqlHttp (lib/testGraphqlHttp.js:69:3)\n  async testGraphqlHttpCLI (cli/test-graphql-http.js:21:5)\u001b[39m\u001b[22m\n"
-  ],
-  [
-    "stdout",
-    "\n\u001b[31m\u001b[1m0/2 tests passed.\u001b[39m\u001b[22m\n\n"
-  ]
-]
+{
+  "stdout": "\nTest: \u001b[1mQuery a field that resolves ok.\u001b[22m\n\nTest: \u001b[1mQuery a field that resolves an error.\u001b[22m\n\n\u001b[31m\u001b[1m0/2 tests passed.\u001b[39m\u001b[22m\n\n",
+  "stderr": "  \n  \u001b[31mExpected values to be strictly equal:\n  \n  404 !== 200\u001b[39m\n  \n  \u001b[31m\u001b[2mlib/testGraphqlHttp.js:39:5\n  async testGraphqlHttp (lib/testGraphqlHttp.js:69:3)\n  async testGraphqlHttpCLI (cli/test-graphql-http.js:21:5)\u001b[39m\u001b[22m\n  \n  \u001b[31minvalid json response body at <uri>/ reason: Unexpected token N in JSON at position 0\u001b[39m\n  \n  \u001b[31m\u001b[2mnode_modules/node-fetch/lib/index.js:272:32\n  async lib/testGraphqlHttp.js:52:18\n  async testGraphqlHttp (lib/testGraphqlHttp.js:69:3)\n  async testGraphqlHttpCLI (cli/test-graphql-http.js:21:5)\u001b[39m\u001b[22m\n"
+}
