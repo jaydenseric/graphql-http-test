@@ -10,12 +10,12 @@
  */
 module.exports = function startServer(app) {
   return new Promise((resolve, reject) => {
-    app.listen(function(error) {
+    app.listen(function (error) {
       if (error) reject(error)
       else
         resolve({
           port: this.address().port,
-          close: () => this.close()
+          close: () => this.close(),
         })
     })
   })

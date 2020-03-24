@@ -44,7 +44,7 @@ tests.add('`test-graphql-http` CLI without the URI argument.', async () => {
     JSON.stringify(
       {
         stdout: stripStackTraces(output.stdout),
-        stderr: stripStackTraces(output.stderr)
+        stderr: stripStackTraces(output.stderr),
       },
       null,
       2
@@ -87,7 +87,7 @@ tests.add('`test-graphql-http` CLI with a noncompliant server.', async () => {
       JSON.stringify(
         {
           stdout: output.stdout.replace(uri, '<uri>'),
-          stderr: output.stderr.replace(uri, '<uri>')
+          stderr: output.stderr.replace(uri, '<uri>'),
         },
         null,
         2

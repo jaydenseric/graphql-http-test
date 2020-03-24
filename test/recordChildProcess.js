@@ -12,7 +12,7 @@ module.exports = function recordChildProcess(childProcess) {
   return new Promise((resolve, reject) => {
     const output = {
       stdout: '',
-      stderr: ''
+      stderr: '',
     }
 
     const add = (pipe, data) => {
@@ -20,11 +20,11 @@ module.exports = function recordChildProcess(childProcess) {
       output[pipe] += text
     }
 
-    childProcess.stdout.on('data', data => {
+    childProcess.stdout.on('data', (data) => {
       add('stdout', data)
     })
 
-    childProcess.stderr.on('data', data => {
+    childProcess.stderr.on('data', (data) => {
       add('stderr', data)
     })
 
