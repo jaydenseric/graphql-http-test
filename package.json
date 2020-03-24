@@ -1,7 +1,6 @@
 {
   "name": "graphql-http-test",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0-alpha.1",
   "description": "A JavaScript API and CLI to test a GraphQL server for GraphQL HTTP spec compliance.",
   "license": "MIT",
   "author": {
