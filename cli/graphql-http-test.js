@@ -3,10 +3,10 @@
 'use strict'
 
 const errorConsole = require('../lib/errorConsole')
-const testGraphqlHttp = require('../lib/testGraphqlHttp')
+const graphqlHttpTest = require('../lib/graphqlHttpTest')
 
 /**
- * Runs the test-graphql-http CLI.
+ * Runs the graphql-http-test CLI.
  * @kind function
  * @name testGraphqlHttpCLI
  * @returns {Promise<void>} Resolves when all work is complete.
@@ -18,9 +18,9 @@ async function testGraphqlHttpCLI() {
 
     if (typeof uri !== 'string') throw new TypeError('Missing URI argument.')
 
-    await testGraphqlHttp(uri)
+    await graphqlHttpTest(uri)
   } catch (error) {
-    errorConsole.group('test-graphql-http CLI error:')
+    errorConsole.group('graphql-http-test CLI error:')
     errorConsole.error(error)
     errorConsole.groupEnd()
     process.exitCode = 1

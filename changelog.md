@@ -1,4 +1,4 @@
-# test-graphql-http changelog
+# graphql-http-test changelog
 
 ## Next
 

@@ -1,5 +1,5 @@
 {
-  "name": "test-graphql-http",
+  "name": "graphql-http-test",
   "version": "0.0.0",
   "private": true,
   "description": "A JavaScript API and CLI to test a GraphQL server for GraphQL HTTP spec compliance.",
@@ -9,9 +9,9 @@
     "email": "me@jaydenseric.com",
     "url": "https://jaydenseric.com"
   },
-  "repository": "github:jaydenseric/test-graphql-http",
-  "homepage": "https://github.com/jaydenseric/test-graphql-http#readme",
-  "bugs": "https://github.com/jaydenseric/test-graphql-http/issues",
+  "repository": "github:jaydenseric/graphql-http-test",
+  "homepage": "https://github.com/jaydenseric/graphql-http-test#readme",
+  "bugs": "https://github.com/jaydenseric/graphql-http-test/issues",
   "funding": "https://github.com/sponsors/jaydenseric",
   "keywords": [
     "test",
@@ -29,7 +29,7 @@
   ],
   "main": "lib",
   "bin": {
-    "test-graphql-http": "cli/test-graphql-http.js"
+    "graphql-http-test": "cli/graphql-http-test.js"
   },
   "engines": {
     "node": ">=10"
