@@ -20,7 +20,7 @@ async function testGraphqlHttpCLI() {
 
     await testGraphqlHttp(uri)
   } catch (error) {
-    errorConsole.group('test-graphql-https CLI error:')
+    errorConsole.group('test-graphql-http CLI error:')
     errorConsole.error(error)
     errorConsole.groupEnd()
     process.exitCode = 1
