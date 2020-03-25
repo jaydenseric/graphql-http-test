@@ -1,6 +1,6 @@
 # graphql-http-test
 
-[![CI status](https://github.com/jaydenseric/graphql-http-test/workflows/CI/badge.svg)](https://github.com/jaydenseric/graphql-http-test/actions)
+[![npm version](https://badgen.net/npm/v/graphql-http-test)](https://npm.im/graphql-http-test) [![CI status](https://github.com/jaydenseric/graphql-http-test/workflows/CI/badge.svg)](https://github.com/jaydenseric/graphql-http-test/actions)
 
 A JavaScript API and CLI to test a GraphQL server for [GraphQL HTTP spec](https://github.com/APIs-guru/graphql-over-http) compliance.
 
