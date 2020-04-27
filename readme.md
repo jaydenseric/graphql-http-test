@@ -56,7 +56,7 @@ Tests that a GraphQL server at a given URI implements the [test schema](#constan
 _How to import._
 
 > ```js
-> const { graphqlHttpTest } = require('graphql-http-test')
+> const { graphqlHttpTest } = require('graphql-http-test');
 > ```
 
 ---
@@ -72,5 +72,5 @@ The test GraphQL schema that a GraphQL server should implement for testing with 
 _How to import._
 
 > ```js
-> const { schema } = require('graphql-http-test')
+> const { schema } = require('graphql-http-test');
 > ```

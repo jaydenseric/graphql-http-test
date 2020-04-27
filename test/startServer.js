@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /**
  * Asynchronously starts a given Koa app server.
@@ -11,12 +11,12 @@
 module.exports = function startServer(app) {
   return new Promise((resolve, reject) => {
     app.listen(function (error) {
-      if (error) reject(error)
+      if (error) reject(error);
       else
         resolve({
           port: this.address().port,
           close: () => this.close(),
-        })
-    })
-  })
-}
+        });
+    });
+  });
+};

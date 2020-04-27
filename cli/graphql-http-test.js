@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-'use strict'
+'use strict';
 
-const errorConsole = require('../lib/errorConsole')
-const graphqlHttpTest = require('../lib/graphqlHttpTest')
+const errorConsole = require('../lib/errorConsole');
+const graphqlHttpTest = require('../lib/graphqlHttpTest');
 
 /**
  * Runs the graphql-http-test CLI.
@@ -14,17 +14,17 @@ const graphqlHttpTest = require('../lib/graphqlHttpTest')
  */
 async function testGraphqlHttpCLI() {
   try {
-    const [, , uri] = process.argv
+    const [, , uri] = process.argv;
 
-    if (typeof uri !== 'string') throw new TypeError('Missing URI argument.')
+    if (typeof uri !== 'string') throw new TypeError('Missing URI argument.');
 
-    await graphqlHttpTest(uri)
+    await graphqlHttpTest(uri);
   } catch (error) {
-    errorConsole.group('graphql-http-test CLI error:')
-    errorConsole.error(error)
-    errorConsole.groupEnd()
-    process.exitCode = 1
+    errorConsole.group('graphql-http-test CLI error:');
+    errorConsole.error(error);
+    errorConsole.groupEnd();
+    process.exitCode = 1;
   }
 }
 
-testGraphqlHttpCLI()
+testGraphqlHttpCLI();

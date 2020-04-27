@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /**
  * Records a Node.js child process.
@@ -13,25 +13,25 @@ module.exports = function recordChildProcess(childProcess) {
     const output = {
       stdout: '',
       stderr: '',
-    }
+    };
 
     const add = (pipe, data) => {
-      const text = data.toString()
-      output[pipe] += text
-    }
+      const text = data.toString();
+      output[pipe] += text;
+    };
 
     childProcess.stdout.on('data', (data) => {
-      add('stdout', data)
-    })
+      add('stdout', data);
+    });
 
     childProcess.stderr.on('data', (data) => {
-      add('stderr', data)
-    })
+      add('stderr', data);
+    });
 
-    childProcess.once('error', reject)
+    childProcess.once('error', reject);
 
     childProcess.once('close', (exitCode, signal) =>
       resolve({ output, exitCode, signal })
-    )
-  })
-}
+    );
+  });
+};

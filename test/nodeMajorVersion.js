@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // eslint-disable-next-line prefer-destructuring
-module.exports = process.versions.node.split('.')[0]
+module.exports = process.versions.node.split('.')[0];
