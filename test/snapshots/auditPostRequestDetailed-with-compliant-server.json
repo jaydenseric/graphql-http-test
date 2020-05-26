@@ -1,0 +1,14 @@
+{
+  "description": "A POST method with `query`, `operationName` and `variables` SHOULD be successful.",
+  "status": "ok",
+  "children": [
+    {
+      "description": "Server returns a 200 HTTP response.",
+      "status": "ok"
+    },
+    {
+      "description": "Response body SHOULD contain JSON appropriate for the query.",
+      "status": "ok"
+    }
+  ]
+}
