@@ -1,4 +1,4 @@
 {
   "stdout": "\nTest: \u001b[1mQuery a field that resolves ok.\u001b[22m\n\nTest: \u001b[1mQuery a field that resolves an error.\u001b[22m\n\n\u001b[31m\u001b[1m0/2 tests passed.\u001b[39m\u001b[22m\n\n",
-  "stderr": "  \n  \u001b[31mInput A expected to strictly equal input B:\n  + expected - actual\n  \n  - 404\n  + 200\u001b[39m\n  \n  \u001b[31m\u001b[2mtests.add (lib/graphqlHttpTest.js:52:5)\u001b[39m\u001b[22m\n  \n  \u001b[31minvalid json response body at <uri>/ reason: Unexpected token N in JSON at position 0\u001b[39m\n  \n  \u001b[31m\u001b[2mnode_modules/node-fetch/lib/index.js:272:32\u001b[39m\u001b[22m\n"
+  "stderr": "  \n  \u001b[31mInput A expected to strictly equal input B:\n  + expected - actual\n  \n  - 404\n  + 200\u001b[39m\n  \n  \u001b[31m\u001b[2mtests.add (public/graphqlHttpTest.js:64:5)\u001b[39m\u001b[22m\n  \n  \u001b[31minvalid json response body at <uri>/ reason: Unexpected token N in JSON at position 0\u001b[39m\n  \n  \u001b[31m\u001b[2mnode_modules/node-fetch/lib/index.js:272:32\u001b[39m\u001b[22m\n"
 }

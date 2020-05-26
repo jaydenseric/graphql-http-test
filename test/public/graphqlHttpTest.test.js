@@ -1,7 +1,7 @@
 'use strict';
 
 const { rejects } = require('assert');
-const graphqlHttpTest = require('../../lib/graphqlHttpTest');
+const graphqlHttpTest = require('../../public/graphqlHttpTest');
 
 module.exports = (tests) => {
   tests.add('`graphqlHttpTest` without the URI parameter.', async () => {

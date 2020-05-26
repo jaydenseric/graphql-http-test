@@ -13,9 +13,21 @@ const {
  * @kind constant
  * @name schema
  * @type {GraphQLSchema}
- * @example <caption>How to import.</caption>
+ * @example <caption>Ways to `import`.</caption>
  * ```js
- * const { schema } = require('graphql-http-test')
+ * import { schema } from 'graphql-http-test';
+ * ```
+ *
+ * ```js
+ * import schema from 'graphql-http-test/public/schema.js';
+ * ```
+ * @example <caption>Ways to `require`.</caption>
+ * ```js
+ * const { schema } = require('graphql-http-test');
+ * ```
+ *
+ * ```js
+ * const schema = require('graphql-http-test/public/schema');
  * ```
  */
 module.exports = new GraphQLSchema({

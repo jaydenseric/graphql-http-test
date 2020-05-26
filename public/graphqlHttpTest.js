@@ -27,9 +27,21 @@ const USER_AGENT = `${pkg.name}/${pkg.version} (+${pkg.homepage})`;
  * @param {string} uri GraphQL server URI.
  * @param {boolean} [throwOnFailure] After tests run, should an error be thrown if some failed.
  * @returns {Promise<void>} Resolves once tests are complete.
- * @example <caption>How to import.</caption>
+ * @example <caption>Ways to `import`.</caption>
  * ```js
- * const { graphqlHttpTest } = require('graphql-http-test')
+ * import { graphqlHttpTest } from 'graphql-http-test';
+ * ```
+ *
+ * ```js
+ * import graphqlHttpTest from 'graphql-http-test/public/graphqlHttpTest.js';
+ * ```
+ * @example <caption>Ways to `require`.</caption>
+ * ```js
+ * const { graphqlHttpTest } = require('graphql-http-test');
+ * ```
+ *
+ * ```js
+ * const graphqlHttpTest = require('graphql-http-test/public/graphqlHttpTest');
  * ```
  */
 module.exports = async function graphqlHttpTest(uri, throwOnFailure) {

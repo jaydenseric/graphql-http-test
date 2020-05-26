@@ -2,8 +2,8 @@
 
 'use strict';
 
-const errorConsole = require('../lib/errorConsole');
-const graphqlHttpTest = require('../lib/graphqlHttpTest');
+const errorConsole = require('../private/errorConsole');
+const graphqlHttpTest = require('../public/graphqlHttpTest');
 
 /**
  * Runs the graphql-http-test CLI.
