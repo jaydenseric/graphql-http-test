@@ -38,18 +38,18 @@ npx graphql-http-test http://localhost:3001/graphql
 ### Table of contents
 
 - [function graphqlHttpTest](#function-graphqlhttptest)
-- [constant schema](#constant-schema)
+- [type AuditResult](#type-auditresult)
+- [type AuditResultStatus](#type-auditresultstatus)
 
 ### function graphqlHttpTest
 
-Tests that a GraphQL server at a given URI implements the [test schema](#constant-schema) and complies with the GraphQL HTTP spec. It outputs test results to the console, and if tests failed sets the `process.exitCode` to `1`, optionally throwing an error.
+Audits that a GraphQL server at a given URI complies with the [GraphQL HTTP spec](https://github.com/APIs-guru/graphql-over-http).
 
-| Parameter | Type | Description |
-| :-- | :-- | :-- |
-| `uri` | string | GraphQL server URI. |
-| `throwOnFailure` | boolean? | After tests run, should an error be thrown if some failed. |
+| Parameter | Type   | Description         |
+| :-------- | :----- | :------------------ |
+| `uri`     | string | GraphQL server URI. |
 
-**Returns:** Promise&lt;void> — Resolves once tests are complete.
+**Returns:** Promise&lt;[AuditResult](#type-auditresult)> — Resolves once tests are complete.
 
 #### Examples
 
@@ -75,30 +75,22 @@ _Ways to `require`._
 
 ---
 
-### constant schema
+### type AuditResult
 
-The test GraphQL schema that a GraphQL server should implement for testing with [`graphqlHttpTest`](#function-graphqlhttptest).
+An audit result.
 
-**Type:** GraphQLSchema
+**Type:** object
 
-#### Examples
+| Property | Type | Description |
+| :-- | :-- | :-- |
+| `description` | string | Audit description. |
+| `status` | [AuditResultStatus](#type-auditresultstatus) | Audit result status. |
+| `children` | [AuditResult](#type-auditresult)? | Child audit results. |
 
-_Ways to `import`._
+---
 
-> ```js
-> import { schema } from 'graphql-http-test';
-> ```
->
-> ```js
-> import schema from 'graphql-http-test/public/schema.js';
-> ```
+### type AuditResultStatus
 
-_Ways to `require`._
+An audit result status.
 
-> ```js
-> const { schema } = require('graphql-http-test');
-> ```
->
-> ```js
-> const schema = require('graphql-http-test/public/schema');
-> ```
+**Type:** `ok` | `warn` | `error`

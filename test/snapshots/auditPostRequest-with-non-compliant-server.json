@@ -1,0 +1,14 @@
+{
+  "description": "A POST method SHOULD be successful.",
+  "status": "warn",
+  "children": [
+    {
+      "description": "Server returns a 200 HTTP response.",
+      "status": "warn"
+    },
+    {
+      "description": "Response body SHOULD contain JSON appropriate for the query.",
+      "status": "warn"
+    }
+  ]
+}
