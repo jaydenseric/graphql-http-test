@@ -1,0 +1,7 @@
+
+Test: [1mQuery a field that resolves ok.[22m
+
+Test: [1mQuery a field that resolves an error.[22m
+
+[32m[1m2/2 tests passed.[39m[22m
+

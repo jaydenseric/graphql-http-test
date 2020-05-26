@@ -17,6 +17,7 @@
 - Added an npm version readme badge.
 - Updated the EditorConfig URL.
 - Restructured test files.
+- Snapshot `stdout` and `stderr` as `.txt` instead of `.json`.
 
 ## 1.0.0-alpha.1
 

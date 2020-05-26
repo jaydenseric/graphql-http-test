@@ -1,4 +1,0 @@
-{
-  "stdout": "\nTest: \u001b[1mQuery a field that resolves ok.\u001b[22m\n\nTest: \u001b[1mQuery a field that resolves an error.\u001b[22m\n\n\u001b[32m\u001b[1m2/2 tests passed.\u001b[39m\u001b[22m\n\n",
-  "stderr": ""
-}

@@ -15,22 +15,17 @@ const cliPath = resolve(__dirname, '../../cli/graphql-http-test');
 
 module.exports = (tests) => {
   tests.add('`graphql-http-test` CLI without the URI argument.', async () => {
-    const { output, exitCode } = await recordChildProcess(
+    const { stdout, stderr, exitCode } = await recordChildProcess(
       spawn('node', [cliPath])
     );
 
     strictEqual(exitCode, 1);
 
+    strictEqual(stdout, '');
+
     await snapshot(
-      JSON.stringify(
-        {
-          stdout: stripStackTraces(output.stdout),
-          stderr: stripStackTraces(output.stderr),
-        },
-        null,
-        2
-      ),
-      resolve(__dirname, '../snapshots/cli-output-without-uri-arg.json')
+      stripStackTraces(stderr),
+      resolve(__dirname, '../snapshots/cli-output-without-uri-arg-stderr.txt')
     );
   });
 
@@ -38,16 +33,18 @@ module.exports = (tests) => {
     const { port, close } = await startServer(koaAppCompliant);
 
     try {
-      const { output, exitCode } = await recordChildProcess(
+      const { stdout, stderr, exitCode } = await recordChildProcess(
         spawn('node', [cliPath, `http://localhost:${port}`])
       );
 
       strictEqual(exitCode, 0);
 
       await snapshot(
-        JSON.stringify(output, null, 2),
-        resolve(__dirname, '../snapshots/cli-output-compliant.json')
+        stdout,
+        resolve(__dirname, '../snapshots/cli-output-compliant-stdout.txt')
       );
+
+      strictEqual(stderr, '');
     } finally {
       close();
     }
@@ -58,24 +55,25 @@ module.exports = (tests) => {
 
     try {
       const uri = `http://localhost:${port}`;
-      const { output, exitCode } = await recordChildProcess(
+      const { stdout, stderr, exitCode } = await recordChildProcess(
         spawn('node', [cliPath, uri])
       );
 
       strictEqual(exitCode, 1);
 
       await snapshot(
-        JSON.stringify(
-          {
-            stdout: output.stdout.replace(uri, '<uri>'),
-            stderr: output.stderr.replace(uri, '<uri>'),
-          },
-          null,
-          2
-        ),
+        stdout,
         resolve(
           __dirname,
-          `../snapshots/cli-output-noncompliant-node-v${nodeMajorVersion}.json`
+          `../snapshots/cli-output-noncompliant-stdout-node-v${nodeMajorVersion}.txt`
+        )
+      );
+
+      await snapshot(
+        stderr.replace(uri, '<uri>'),
+        resolve(
+          __dirname,
+          `../snapshots/cli-output-noncompliant-stderr-node-v${nodeMajorVersion}.txt`
         )
       );
     } finally {
