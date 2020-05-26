@@ -15,6 +15,7 @@
 - Stop testing Node.js v13, start testing Node.js v14.
 - Added an npm version readme badge.
 - Updated the EditorConfig URL.
+- Restructured test files.
 
 ## 1.0.0-alpha.1
 
