@@ -18,6 +18,7 @@
 - Updated the EditorConfig URL.
 - Restructured test files.
 - Snapshot `stdout` and `stderr` as `.txt` instead of `.json`.
+- Assert exit code after `stdout` and `stderr` for easier test failure diagnosis.
 
 ## 1.0.0-alpha.1
 

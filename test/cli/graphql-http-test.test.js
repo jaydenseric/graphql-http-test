@@ -19,14 +19,14 @@ module.exports = (tests) => {
       spawn('node', [cliPath])
     );
 
-    strictEqual(exitCode, 1);
-
     strictEqual(stdout, '');
 
     await snapshot(
       stripStackTraces(stderr),
       resolve(__dirname, '../snapshots/cli-output-without-uri-arg-stderr.txt')
     );
+
+    strictEqual(exitCode, 1);
   });
 
   tests.add('`graphql-http-test` CLI with a compliant server.', async () => {
@@ -37,14 +37,14 @@ module.exports = (tests) => {
         spawn('node', [cliPath, `http://localhost:${port}`])
       );
 
-      strictEqual(exitCode, 0);
-
       await snapshot(
         stdout,
         resolve(__dirname, '../snapshots/cli-output-compliant-stdout.txt')
       );
 
       strictEqual(stderr, '');
+
+      strictEqual(exitCode, 0);
     } finally {
       close();
     }
@@ -59,8 +59,6 @@ module.exports = (tests) => {
         spawn('node', [cliPath, uri])
       );
 
-      strictEqual(exitCode, 1);
-
       await snapshot(
         stdout,
         resolve(__dirname, `../snapshots/cli-output-noncompliant-stdout.txt`)
@@ -73,6 +71,8 @@ module.exports = (tests) => {
           `../snapshots/cli-output-noncompliant-stderr-node-v${nodeMajorVersion}.txt`
         )
       );
+
+      strictEqual(exitCode, 1);
     } finally {
       close();
     }
