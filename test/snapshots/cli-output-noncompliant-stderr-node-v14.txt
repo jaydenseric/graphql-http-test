@@ -3,13 +3,13 @@
   
   404 !== 200[39m
   
-  [31m[2mpublic/graphqlHttpTest.js:64:5
-  async graphqlHttpTest (public/graphqlHttpTest.js:95:3)
+  [31m[2mpublic/graphqlHttpTest.js:53:5
+  async graphqlHttpTest (public/graphqlHttpTest.js:84:3)
   async testGraphqlHttpCLI (cli/graphql-http-test.js:21:5)[39m[22m
   
   [31minvalid json response body at <uri>/ reason: Unexpected token N in JSON at position 0[39m
   
   [31m[2mnode_modules/node-fetch/lib/index.js:272:32
-  async public/graphqlHttpTest.js:78:18
-  async graphqlHttpTest (public/graphqlHttpTest.js:95:3)
+  async public/graphqlHttpTest.js:67:18
+  async graphqlHttpTest (public/graphqlHttpTest.js:84:3)
   async testGraphqlHttpCLI (cli/graphql-http-test.js:21:5)[39m[22m

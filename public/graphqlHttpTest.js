@@ -4,18 +4,7 @@ const { deepStrictEqual, strictEqual } = require('assert');
 const isObject = require('isobject');
 const fetch = require('node-fetch');
 const { TestDirector } = require('test-director');
-const pkg = require('../package.json');
-
-/**
- * The user agent string to be used for all requests to servers being tested, to
- * help identify the source of accidental API abuse.
- * @kind constant
- * @name USER_AGENT
- * @type {string}
- * @see [jaydenseric/graphql-http-test#2](https://github.com/jaydenseric/graphql-http-test/issues/2).
- * @ignore
- */
-const USER_AGENT = `${pkg.name}/${pkg.version} (+${pkg.homepage})`;
+const userAgent = require('../private/userAgent');
 
 /**
  * Tests that a GraphQL server at a given URI implements the
@@ -54,7 +43,7 @@ module.exports = async function graphqlHttpTest(uri, throwOnFailure) {
     const response = await fetch(uri, {
       method: 'POST',
       headers: {
-        'User-Agent': USER_AGENT,
+        'User-Agent': userAgent,
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
@@ -69,7 +58,7 @@ module.exports = async function graphqlHttpTest(uri, throwOnFailure) {
     const response = await fetch(uri, {
       method: 'POST',
       headers: {
-        'User-Agent': USER_AGENT,
+        'User-Agent': userAgent,
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
