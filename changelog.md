@@ -12,6 +12,7 @@
 - Updated the [`graphql`](https://npm.im/graphql) peer dependency to `0.13.1 - 15`.
 - Updated Prettier related package scripts.
 - Configured Prettier option `semi` to the default, `true`.
+- Stop testing Node.js v13, start testing Node.js v14.
 - Added an npm version readme badge.
 - Updated the EditorConfig URL.
 
