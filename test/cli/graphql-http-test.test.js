@@ -63,10 +63,7 @@ module.exports = (tests) => {
 
       await snapshot(
         stdout,
-        resolve(
-          __dirname,
-          `../snapshots/cli-output-noncompliant-stdout-node-v${nodeMajorVersion}.txt`
-        )
+        resolve(__dirname, `../snapshots/cli-output-noncompliant-stdout.txt`)
       );
 
       await snapshot(
