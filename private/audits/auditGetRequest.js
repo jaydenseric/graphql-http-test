@@ -3,6 +3,7 @@
 'use strict';
 
 const isObject = require('isobject');
+const testQuery = require('../testQuery');
 const userAgent = require('../userAgent');
 
 /**
@@ -17,24 +18,12 @@ const userAgent = require('../userAgent');
 module.exports = async function auditGetRequest({ uri }) {
   const url = new URL(uri);
 
-  url.searchParams.append(
-    'query',
-    /* GraphQL */ `
-      {
-        __schema {
-          queryType {
-            name
-          }
-        }
-      }
-    `
-  );
+  url.searchParams.append('query', testQuery);
 
   const response = await fetch(url, {
     method: 'GET',
     headers: {
       'User-Agent': userAgent,
-      'Content-Type': 'application/graphql+json',
       Accept: 'application/graphql+json',
     },
   });
@@ -76,8 +65,8 @@ module.exports = async function auditGetRequest({ uri }) {
   });
 
   return {
-    description: 'A GET method SHOULD be successful.',
-    status: children.every(({ status }) => status === 'ok') ? 'ok' : 'warn',
+    description: 'A correct GET request MUST have a correct response.',
+    status: children.every(({ status }) => status === 'ok') ? 'ok' : 'error',
     children,
   };
 };

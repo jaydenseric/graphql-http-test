@@ -1,30 +1,17 @@
 'use strict';
 
-const http = require('http');
+const { createServer } = require('http');
 const { resolve } = require('path');
 const snapshot = require('snapshot-assertion');
 const auditGetRequest = require('../../../private/audits/auditGetRequest');
 const listen = require('../../listen');
+const testQueryData = require('../../testQueryData');
 
 module.exports = (tests) => {
   tests.add('`auditGetRequest` with status ok.', async () => {
-    const server = http.createServer(async (request, response) => {
+    const server = createServer(async (request, response) => {
       response.writeHead(200, { 'Content-Type': 'application/graphql+json' });
-      response.end(
-        JSON.stringify(
-          {
-            data: {
-              __schema: {
-                queryType: {
-                  name: 'Query',
-                },
-              },
-            },
-          },
-          null,
-          2
-        )
-      );
+      response.end(JSON.stringify({ data: testQueryData }, null, 2));
     });
 
     const { port, close } = await listen(server);
@@ -43,7 +30,7 @@ module.exports = (tests) => {
   });
 
   tests.add('`auditGetRequest` with status error.', async () => {
-    const server = http.createServer(async (request, response) => {
+    const server = createServer(async (request, response) => {
       response.statusCode = 404;
       response.end();
     });

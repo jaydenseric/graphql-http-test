@@ -3,6 +3,7 @@
 'use strict';
 
 const isObject = require('isobject');
+const testQuery = require('../testQuery');
 const userAgent = require('../userAgent');
 
 /**
@@ -19,20 +20,10 @@ module.exports = async function auditPostRequest({ uri }) {
     method: 'POST',
     headers: {
       'User-Agent': userAgent,
-      'Content-Type': 'application/graphql+json',
+      'Content-Type': 'application/json',
       Accept: 'application/graphql+json',
     },
-    body: JSON.stringify({
-      query: /* GraphQL */ `
-        {
-          __schema {
-            queryType {
-              name
-            }
-          }
-        }
-      `,
-    }),
+    body: JSON.stringify({ query: testQuery }),
   });
 
   const children = [
@@ -72,8 +63,8 @@ module.exports = async function auditPostRequest({ uri }) {
   });
 
   return {
-    description: 'A POST method SHOULD be successful.',
-    status: children.every(({ status }) => status === 'ok') ? 'ok' : 'warn',
+    description: 'A correct POST request MUST have a correct response.',
+    status: children.every(({ status }) => status === 'ok') ? 'ok' : 'error',
     children,
   };
 };

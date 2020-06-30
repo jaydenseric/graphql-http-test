@@ -2,8 +2,8 @@
 
 'use strict';
 
-const auditGetRequest = require('./auditGetRequest');
-const auditPostRequest = require('./auditPostRequest');
+const auditGetRequests = require('./auditGetRequests');
+const auditPostRequests = require('./auditPostRequests');
 
 /**
  * Audits if the GraphQL server correctly handles either a GET or POST request.
@@ -16,8 +16,8 @@ const auditPostRequest = require('./auditPostRequest');
  */
 module.exports = async function auditGetOrPostRequest(context) {
   const children = await Promise.all([
-    auditGetRequest(context),
-    auditPostRequest(context),
+    auditGetRequests(context),
+    auditPostRequests(context),
   ]);
 
   const okCount = children.reduce(
@@ -26,7 +26,7 @@ module.exports = async function auditGetOrPostRequest(context) {
   );
 
   return {
-    description: 'Either a POST or a GET method MUST be successful.',
+    description: 'GET or POST requests MUST be supported.',
     status: okCount === children.length ? 'ok' : okCount ? 'warn' : 'error',
     children,
   };

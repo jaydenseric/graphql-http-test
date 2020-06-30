@@ -1,32 +1,72 @@
 {
-  "description": "Either a POST or a GET method MUST be successful.",
+  "description": "GET or POST requests MUST be supported.",
   "status": "warn",
   "children": [
     {
-      "description": "A GET method SHOULD be successful.",
+      "description": "GET requests SHOULD be supported.",
       "status": "warn",
       "children": [
         {
-          "description": "Response HTTP status MUST be 200.",
-          "status": "error"
+          "description": "A correct GET request MUST have a correct response.",
+          "status": "error",
+          "children": [
+            {
+              "description": "Response HTTP status MUST be 200.",
+              "status": "error"
+            },
+            {
+              "description": "Response body MUST contain appropriate JSON.",
+              "status": "error"
+            }
+          ]
         },
         {
-          "description": "Response body MUST contain appropriate JSON.",
-          "status": "error"
+          "description": "A query syntax error MUST have a correct response.",
+          "status": "error",
+          "children": [
+            {
+              "description": "Response HTTP status MUST be 400.",
+              "status": "error"
+            },
+            {
+              "description": "Response body MUST contain appropriate JSON.",
+              "status": "error"
+            }
+          ]
         }
       ]
     },
     {
-      "description": "A POST method SHOULD be successful.",
+      "description": "POST requests SHOULD be supported.",
       "status": "ok",
       "children": [
         {
-          "description": "Response HTTP status MUST be 200.",
-          "status": "ok"
+          "description": "A correct POST request MUST have a correct response.",
+          "status": "ok",
+          "children": [
+            {
+              "description": "Response HTTP status MUST be 200.",
+              "status": "ok"
+            },
+            {
+              "description": "Response body MUST contain appropriate JSON.",
+              "status": "ok"
+            }
+          ]
         },
         {
-          "description": "Response body MUST contain appropriate JSON.",
-          "status": "ok"
+          "description": "A query syntax error MUST have a correct response.",
+          "status": "ok",
+          "children": [
+            {
+              "description": "Response HTTP status MUST be 400.",
+              "status": "ok"
+            },
+            {
+              "description": "Response body MUST contain appropriate JSON.",
+              "status": "ok"
+            }
+          ]
         }
       ]
     }

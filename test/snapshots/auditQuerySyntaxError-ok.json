@@ -1,9 +1,9 @@
 {
-  "description": "A correct GET request MUST have a correct response.",
+  "description": "A query syntax error MUST have a correct response.",
   "status": "ok",
   "children": [
     {
-      "description": "Response HTTP status MUST be 200.",
+      "description": "Response HTTP status MUST be 400.",
       "status": "ok"
     },
     {

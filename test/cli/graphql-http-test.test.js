@@ -2,7 +2,7 @@
 
 const { strictEqual } = require('assert');
 const { spawn } = require('child_process');
-const http = require('http');
+const { createServer } = require('http');
 const { resolve } = require('path');
 const snapshot = require('snapshot-assertion');
 const listen = require('../listen');
@@ -35,7 +35,7 @@ module.exports = (tests) => {
   });
 
   tests.add('`graphql-http-test` CLI with status error.', async () => {
-    const server = http.createServer(async (request, response) => {
+    const server = createServer(async (request, response) => {
       response.statusCode = 404;
       response.end();
     });

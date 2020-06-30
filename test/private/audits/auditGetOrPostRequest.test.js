@@ -1,30 +1,41 @@
 'use strict';
 
-const http = require('http');
+const { createServer } = require('http');
 const { resolve } = require('path');
+const getRawBody = require('raw-body');
 const snapshot = require('snapshot-assertion');
 const auditGetOrPostRequest = require('../../../private/audits/auditGetOrPostRequest');
 const listen = require('../../listen');
+const testQueryData = require('../../testQueryData');
 
 module.exports = (tests) => {
   tests.add('`auditGetOrPostRequest` with status ok.', async () => {
-    const server = http.createServer(async (request, response) => {
-      response.writeHead(200, { 'Content-Type': 'application/graphql+json' });
-      response.end(
-        JSON.stringify(
-          {
-            data: {
-              __schema: {
-                queryType: {
-                  name: 'Query',
-                },
-              },
-            },
-          },
-          null,
-          2
-        )
-      );
+    const server = createServer(async (request, response) => {
+      let query;
+
+      if (request.method === 'GET')
+        query = new URL(
+          request.url,
+          `http://${request.headers.host}`
+        ).searchParams.get('query');
+      else {
+        const body = await getRawBody(request);
+        ({ query } = JSON.parse(body));
+      }
+
+      if (query === '{}') {
+        response.writeHead(400, { 'Content-Type': 'application/graphql+json' });
+        response.end(
+          JSON.stringify(
+            { errors: [{ message: 'Query syntax error.' }] },
+            null,
+            2
+          )
+        );
+      } else {
+        response.writeHead(200, { 'Content-Type': 'application/graphql+json' });
+        response.end(JSON.stringify({ data: testQueryData }, null, 2));
+      }
     });
 
     const { port, close } = await listen(server);
@@ -43,24 +54,28 @@ module.exports = (tests) => {
   });
 
   tests.add('`auditGetOrPostRequest` with status warn.', async () => {
-    const server = http.createServer(async (request, response) => {
+    const server = createServer(async (request, response) => {
       if (request.method === 'POST') {
-        response.writeHead(200, { 'Content-Type': 'application/graphql+json' });
-        response.end(
-          JSON.stringify(
-            {
-              data: {
-                __schema: {
-                  queryType: {
-                    name: 'Query',
-                  },
-                },
-              },
-            },
-            null,
-            2
-          )
-        );
+        const body = await getRawBody(request);
+        const { query } = JSON.parse(body);
+
+        if (query === '{}') {
+          response.writeHead(400, {
+            'Content-Type': 'application/graphql+json',
+          });
+          response.end(
+            JSON.stringify(
+              { errors: [{ message: 'Query syntax error.' }] },
+              null,
+              2
+            )
+          );
+        } else {
+          response.writeHead(200, {
+            'Content-Type': 'application/graphql+json',
+          });
+          response.end(JSON.stringify({ data: testQueryData }, null, 2));
+        }
       } else {
         response.statusCode = 405;
         response.end();
@@ -83,7 +98,7 @@ module.exports = (tests) => {
   });
 
   tests.add('`auditGetOrPostRequest` with status error.', async () => {
-    const server = http.createServer(async (request, response) => {
+    const server = createServer(async (request, response) => {
       response.statusCode = 404;
       response.end();
     });

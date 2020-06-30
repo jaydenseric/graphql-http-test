@@ -1,5 +1,5 @@
 {
-  "description": "A POST method SHOULD be successful.",
+  "description": "A correct POST request MUST have a correct response.",
   "status": "ok",
   "children": [
     {
