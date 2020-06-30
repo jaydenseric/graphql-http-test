@@ -19,7 +19,7 @@
 - Configured Prettier option `semi` to the default, `true`.
 - Stop testing Node.js v13, start testing Node.js v14.
 - Added an npm version readme badge.
-- Updated the EditorConfig URL.
+- Updated the EditorConfig.
 - Restructured test files.
 - Snapshot `stdout` and `stderr` as `.txt` instead of `.json`.
 - Assert exit code after `stdout` and `stderr` for easier test failure diagnosis.
