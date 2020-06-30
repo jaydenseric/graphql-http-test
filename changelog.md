@@ -17,6 +17,7 @@
 - Added an npm version readme badge.
 - Updated the EditorConfig URL.
 - Restructured test files.
+- Removed the `recordChildProcess` test by using the Node.js `child_process.spawnSync` API.
 - Snapshot `stdout` and `stderr` as `.txt` instead of `.json`.
 - Assert exit code after `stdout` and `stderr` for easier test failure diagnosis.
 

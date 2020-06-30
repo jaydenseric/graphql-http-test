@@ -1,21 +1,22 @@
 'use strict';
 
 const { strictEqual } = require('assert');
-const { spawn } = require('child_process');
+const { spawnSync } = require('child_process');
 const http = require('http');
 const { resolve } = require('path');
 const snapshot = require('snapshot-assertion');
 const listen = require('../listen');
-const recordChildProcess = require('../recordChildProcess');
 const stripStackTraces = require('../stripStackTraces');
 
 const cliPath = resolve(__dirname, '../../cli/graphql-http-test');
 
 module.exports = (tests) => {
   tests.add('`graphql-http-test` CLI without the URI argument.', async () => {
-    const { stdout, stderr, exitCode } = await recordChildProcess(
-      spawn('node', [cliPath])
-    );
+    const { stdout, stderr, status, error } = spawnSync('node', [cliPath], {
+      encoding: 'utf8',
+    });
+
+    if (error) throw error;
 
     strictEqual(stdout, '');
 
@@ -24,7 +25,7 @@ module.exports = (tests) => {
       resolve(__dirname, '../snapshots/cli-without-uri-arg-stderr.txt')
     );
 
-    strictEqual(exitCode, 1);
+    strictEqual(status, 1);
   });
 
   tests.add(
@@ -38,9 +39,13 @@ module.exports = (tests) => {
       const { port, close } = await listen(server);
 
       try {
-        const { stdout, stderr, exitCode } = await recordChildProcess(
-          spawn('node', [cliPath, `https:localhost:${port}`])
+        const { stdout, stderr, status, error } = spawnSync(
+          'node',
+          [cliPath, `https:localhost:${port}`],
+          { encoding: 'utf8' }
         );
+
+        if (error) throw error;
 
         strictEqual(stdout, '');
 
@@ -52,7 +57,7 @@ module.exports = (tests) => {
           )
         );
 
-        strictEqual(exitCode, 1);
+        strictEqual(status, 1);
       } finally {
         close();
       }
