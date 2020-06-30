@@ -5,6 +5,15 @@
 const isObject = require('isobject');
 const userAgent = require('../userAgent');
 
+/**
+ * Audits if the GraphQL server correctly handles a POST request.
+ * @kind function
+ * @name auditPostRequest
+ * @param {object} context Audit context.
+ * @param {string} context.uri URI to use for the request.
+ * @returns {AuditResult} Audit result.
+ * @ignore
+ */
 module.exports = async function auditPostRequest({ uri }) {
   const response = await fetch(uri, {
     method: 'POST',

@@ -5,6 +5,15 @@
 const auditGetRequest = require('./auditGetRequest');
 const auditPostRequest = require('./auditPostRequest');
 
+/**
+ * Audits if the GraphQL server correctly handles either a GET or POST request.
+ * @kind function
+ * @name auditGetOrPostRequest
+ * @param {object} context Audit context.
+ * @param {string} context.uri URI to use for the request.
+ * @returns {AuditResult} Audit result.
+ * @ignore
+ */
 module.exports = async function auditGetOrPostRequest(context) {
   const children = await Promise.all([
     auditGetRequest(context),
