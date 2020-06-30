@@ -1,2 +1,5 @@
-graphql-http-test CLI error:
-  TypeError: Missing URI argument.
+
+Error running graphql-http-test:
+
+  Missing URI argument. 
+  

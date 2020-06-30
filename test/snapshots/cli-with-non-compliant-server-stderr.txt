@@ -1,2 +1,5 @@
-graphql-http-test CLI error:
+
+Error running graphql-http-test:
+
   TypeError: Only absolute URLs are supported
+  

@@ -8,6 +8,10 @@
 - Added a [package `exports` field](https://nodejs.org/api/esm.html#esm_package_entry_points) with [conditional exports](https://nodejs.org/api/esm.html#esm_conditional_exports) to support native ESM in Node.js and keep internal code private, [whilst avoiding the dual package hazard](https://nodejs.org/api/esm.html#esm_approach_1_use_an_es_module_wrapper). Published files have been reorganized, so previously undocumented deep imports will need to be rewritten according to the newly documented paths.
 - Updated dev dependencies, some of which require newer Node.js versions than previously supported.
 
+### Minor
+
+- Display CLI errors with color, and without stack traces for expected user errors.
+
 ### Patch
 
 - Updated the [`graphql`](https://npm.im/graphql) peer dependency to `0.13.1 - 15`.
