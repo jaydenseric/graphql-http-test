@@ -60,7 +60,7 @@ module.exports = async function auditPostRequest({ uri }) {
   // }
 
   children.push({
-    description: 'Response body MUST contain JSON appropriate for the query.',
+    description: 'Response body MUST contain appropriate JSON.',
     status:
       isObject(json) &&
       isObject(json.data) &&

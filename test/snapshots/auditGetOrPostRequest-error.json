@@ -11,7 +11,7 @@
           "status": "error"
         },
         {
-          "description": "Response body MUST contain JSON appropriate for the query.",
+          "description": "Response body MUST contain appropriate JSON.",
           "status": "error"
         }
       ]
@@ -25,7 +25,7 @@
           "status": "error"
         },
         {
-          "description": "Response body MUST contain JSON appropriate for the query.",
+          "description": "Response body MUST contain appropriate JSON.",
           "status": "error"
         }
       ]
