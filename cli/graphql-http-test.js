@@ -10,7 +10,7 @@ const graphqlHttpTest = require('../public/graphqlHttpTest');
 const reportAuditResult = require('../public/reportAuditResult');
 
 /**
- * Runs the graphql-http-test CLI.
+ * Runs the `graphql-http-test` CLI.
  * @kind function
  * @name testGraphqlHttpCLI
  * @returns {Promise<void>} Resolves when all work is complete.
@@ -28,6 +28,8 @@ async function testGraphqlHttpCLI() {
       kleur.bold().red('\nError running graphql-http-test:\n')
     );
     errorConsole.error(
+      // It’s difficult to test unexpected internal errors.
+      // coverage ignore next line
       error instanceof CliError ? kleur.red(error.message) : error,
       '\n'
     );

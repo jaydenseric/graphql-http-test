@@ -1,0 +1,5 @@
+[1m[31m
+Error running graphql-http-test:
+[22m[39m
+  [31mMissing URI argument.[39m 
+  

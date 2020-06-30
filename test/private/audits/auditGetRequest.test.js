@@ -3,11 +3,11 @@
 const http = require('http');
 const { resolve } = require('path');
 const snapshot = require('snapshot-assertion');
-const auditPostRequest = require('../../../private/audits/auditPostRequest');
+const auditGetRequest = require('../../../private/audits/auditGetRequest');
 const listen = require('../../listen');
 
 module.exports = (tests) => {
-  tests.add('`auditPostRequest` with status ok.', async () => {
+  tests.add('`auditGetRequest` with status ok.', async () => {
     const server = http.createServer(async (request, response) => {
       response.writeHead(200, { 'Content-Type': 'application/graphql+json' });
       response.end(
@@ -30,19 +30,19 @@ module.exports = (tests) => {
     const { port, close } = await listen(server);
 
     try {
-      const result = await auditPostRequest({
+      const result = await auditGetRequest({
         uri: `http://localhost:${port}`,
       });
       await snapshot(
         JSON.stringify(result, null, 2),
-        resolve(__dirname, '../../snapshots/auditPostRequest-ok.json')
+        resolve(__dirname, '../../snapshots/auditGetRequest-ok.json')
       );
     } finally {
       close();
     }
   });
 
-  tests.add('`auditPostRequest` with status error.', async () => {
+  tests.add('`auditGetRequest` with status error.', async () => {
     const server = http.createServer(async (request, response) => {
       response.statusCode = 404;
       response.end();
@@ -51,12 +51,12 @@ module.exports = (tests) => {
     const { port, close } = await listen(server);
 
     try {
-      const result = await auditPostRequest({
+      const result = await auditGetRequest({
         uri: `http://localhost:${port}`,
       });
       await snapshot(
         JSON.stringify(result, null, 2),
-        resolve(__dirname, '../../snapshots/auditPostRequest-error.json')
+        resolve(__dirname, '../../snapshots/auditGetRequest-error.json')
       );
     } finally {
       close();

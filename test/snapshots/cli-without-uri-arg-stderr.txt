@@ -1,5 +1,0 @@
-
-Error running graphql-http-test:
-
-  Missing URI argument. 
-  

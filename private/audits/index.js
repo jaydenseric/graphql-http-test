@@ -1,10 +1,10 @@
 'use strict';
 
 const worstAuditResultStatus = require('../worstAuditResultStatus');
-const auditPostRequest = require('./auditPostRequest');
+const auditGetOrPostRequest = require('./auditGetOrPostRequest');
 
 module.exports = async function audit(context) {
-  const children = [await auditPostRequest(context)];
+  const children = await Promise.all([auditGetOrPostRequest(context)]);
   return {
     description: 'Full compliance.',
     status: worstAuditResultStatus(children),

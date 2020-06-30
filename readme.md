@@ -78,7 +78,7 @@ _Ways to `require`._
 
 ### function reportAuditResult
 
-Reports the result of an audit to the console. Intended for use in a server environment.
+Reports the result of an audit in a human readable format either to `stderr` if the root audit has an `error` status, or else to `stdout`. Only intended for use in a Node.js environment.
 
 | Parameter     | Type                             | Description      |
 | :------------ | :------------------------------- | :--------------- |

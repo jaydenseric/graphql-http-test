@@ -1,0 +1,14 @@
+{
+  "description": "A GET method SHOULD be successful.",
+  "status": "warn",
+  "children": [
+    {
+      "description": "Response HTTP status MUST be 200.",
+      "status": "error"
+    },
+    {
+      "description": "Response body MUST contain JSON appropriate for the query.",
+      "status": "error"
+    }
+  ]
+}

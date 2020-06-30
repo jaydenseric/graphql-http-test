@@ -5,25 +5,29 @@
 const isObject = require('isobject');
 const userAgent = require('../userAgent');
 
-module.exports = async function auditPostRequest({ uri }) {
-  const response = await fetch(uri, {
-    method: 'POST',
+module.exports = async function auditGetRequest({ uri }) {
+  const url = new URL(uri);
+
+  url.searchParams.append(
+    'query',
+    /* GraphQL */ `
+      {
+        __schema {
+          queryType {
+            name
+          }
+        }
+      }
+    `
+  );
+
+  const response = await fetch(url, {
+    method: 'GET',
     headers: {
       'User-Agent': userAgent,
       'Content-Type': 'application/graphql+json',
       Accept: 'application/graphql+json',
     },
-    body: JSON.stringify({
-      query: /* GraphQL */ `
-        {
-          __schema {
-            queryType {
-              name
-            }
-          }
-        }
-      `,
-    }),
   });
 
   const children = [
@@ -63,7 +67,7 @@ module.exports = async function auditPostRequest({ uri }) {
   });
 
   return {
-    description: 'A POST method SHOULD be successful.',
+    description: 'A GET method SHOULD be successful.',
     status: children.every(({ status }) => status === 'ok') ? 'ok' : 'warn',
     children,
   };

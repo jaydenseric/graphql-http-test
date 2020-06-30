@@ -1,0 +1,34 @@
+{
+  "description": "Either a POST or a GET method MUST be successful.",
+  "status": "ok",
+  "children": [
+    {
+      "description": "A GET method SHOULD be successful.",
+      "status": "ok",
+      "children": [
+        {
+          "description": "Response HTTP status MUST be 200.",
+          "status": "ok"
+        },
+        {
+          "description": "Response body MUST contain JSON appropriate for the query.",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "description": "A POST method SHOULD be successful.",
+      "status": "ok",
+      "children": [
+        {
+          "description": "Response HTTP status MUST be 200.",
+          "status": "ok"
+        },
+        {
+          "description": "Response body MUST contain JSON appropriate for the query.",
+          "status": "ok"
+        }
+      ]
+    }
+  ]
+}

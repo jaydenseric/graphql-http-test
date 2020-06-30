@@ -1,0 +1,8 @@
+[31m✗ Full compliance.[39m
+  [31m✗ Either a POST or a GET method MUST be successful.[39m
+    [33m⚠️ A GET method SHOULD be successful.[39m
+      [31m✗ Response HTTP status MUST be 200.[39m
+      [31m✗ Response body MUST contain JSON appropriate for the query.[39m
+    [33m⚠️ A POST method SHOULD be successful.[39m
+      [31m✗ Response HTTP status MUST be 200.[39m
+      [31m✗ Response body MUST contain JSON appropriate for the query.[39m

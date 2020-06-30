@@ -3,11 +3,11 @@
   "status": "ok",
   "children": [
     {
-      "description": "Server returns a 200 HTTP response.",
+      "description": "Response HTTP status MUST be 200.",
       "status": "ok"
     },
     {
-      "description": "Response body SHOULD contain JSON appropriate for the query.",
+      "description": "Response body MUST contain JSON appropriate for the query.",
       "status": "ok"
     }
   ]

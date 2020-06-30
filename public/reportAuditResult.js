@@ -1,6 +1,7 @@
 'use strict';
 
 const kleur = require('kleur');
+const errorConsole = require('../private/errorConsole');
 
 const STATUS_SYMBOLS = {
   ok: '✓',
@@ -15,19 +16,21 @@ const STATUS_COLORS = {
 };
 
 /**
- * Reports the result of an audit to the console. Intended for use in a server
- * environment.
+ * Reports the result of an audit in a human readable format either to `stderr`
+ * if the root audit has an `error` status, or else to `stdout`. Only intended
+ * for use in a Node.js environment.
  * @kind function
  * @name reportAuditResult
  * @param {AuditResult} auditResult An audit result.
  */
 module.exports = function reportAuditResult(auditResult) {
+  const reporter = auditResult.status === 'error' ? errorConsole : console;
   const recurse = ({ description, status, children }) => {
-    console.groupCollapsed(
+    reporter.groupCollapsed(
       kleur[STATUS_COLORS[status]](`${STATUS_SYMBOLS[status]} ${description}`)
     );
     if (children) children.forEach(recurse);
-    console.groupEnd();
+    reporter.groupEnd();
   };
 
   recurse(auditResult);
