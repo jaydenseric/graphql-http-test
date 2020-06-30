@@ -1,21 +1,25 @@
 'use strict';
 
-const { strictEqual } = require('assert');
+const { execSync } = require('child_process');
 const { resolve } = require('path');
 const snapshot = require('snapshot-assertion');
-const execFilePromise = require('../execFilePromise');
 
 module.exports = (tests) => {
   tests.add('`reportAuditResults`.', async () => {
-    const { stdout, stderr } = await execFilePromise('node', [
-      resolve(__dirname, '../fixtures/reportAuditResults'),
-    ]);
+    const stdout = execSync(
+      `node ${resolve(__dirname, '../fixtures/reportAuditResults')}`,
+      {
+        encoding: 'utf8',
+        env: {
+          ...process.env,
+          FORCE_COLOR: 1,
+        },
+      }
+    );
 
     await snapshot(
       stdout,
       resolve(__dirname, '../snapshots/reportAuditResults-stdout.txt')
     );
-
-    strictEqual(stderr, '');
   });
 };

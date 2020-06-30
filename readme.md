@@ -38,6 +38,7 @@ npx graphql-http-test http://localhost:3001/graphql
 ### Table of contents
 
 - [function graphqlHttpTest](#function-graphqlhttptest)
+- [function reportAuditResult](#function-reportauditresult)
 - [type AuditResult](#type-auditresult)
 - [type AuditResultStatus](#type-auditresultstatus)
 
@@ -72,6 +73,16 @@ _Ways to `require`._
 > ```js
 > const graphqlHttpTest = require('graphql-http-test/public/graphqlHttpTest');
 > ```
+
+---
+
+### function reportAuditResult
+
+Reports the result of an audit to the console. Intended for use in a server environment.
+
+| Parameter     | Type                             | Description      |
+| :------------ | :------------------------------- | :--------------- |
+| `auditResult` | [AuditResult](#type-auditresult) | An audit result. |
 
 ---
 

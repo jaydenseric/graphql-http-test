@@ -8,8 +8,8 @@ const tests = new TestDirector();
 require('./cli/graphql-http-test.test')(tests);
 require('./private/audits/auditPostRequest.test')(tests);
 require('./private/audits/auditPostRequestDetailed.test')(tests);
-require('./private/reportAuditResults.test')(tests);
 require('./private/worstAuditResultStatus.test')(tests);
 require('./public/graphqlHttpTest.test')(tests);
+require('./public/reportAuditResults.test')(tests);
 
 tests.run();
