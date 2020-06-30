@@ -1,5 +1,3 @@
-/* eslint-env node, browser */
-
 'use strict';
 
 const auditPostRequest = require('./auditPostRequest');
