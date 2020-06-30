@@ -19,7 +19,7 @@ Finally use either the function [`graphqlHttpTest`](#function-testgraphqlhttp) o
 ## Support
 
 - Linux, macOS.
-- Node.js `^10.13.0 || ^12.0.0 || >= 13.7.0`.
+- Node.js `^10.17.0 || ^12.0.0 || >= 13.7.0`.
 
 ## CLI
 
