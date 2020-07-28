@@ -3,3 +3,6 @@
   [33m⚠️ a.b[39m
   [32m✓ a.c[39m
     [32m✓ a.c.a[39m
+[1m[33m
+Endpoint is compliant with warnings.
+[22m[39m

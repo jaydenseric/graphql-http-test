@@ -3,3 +3,6 @@
   [32m✓ a.b[39m
   [32m✓ a.c[39m
     [32m✓ a.c.a[39m
+[1m[32m
+Endpoint is compliant.
+[22m[39m

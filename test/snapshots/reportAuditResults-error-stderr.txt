@@ -3,3 +3,6 @@
   [33m⚠️ a.b[39m
   [31m✗ a.c[39m
     [31m✗ a.c.a[39m
+[1m[31m
+Endpoint is non-compliant.
+[22m[39m

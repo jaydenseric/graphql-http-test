@@ -18,3 +18,6 @@
         [31m✗ Response HTTP status MUST be 400.[39m
         [31m✗ Response Content-Type header MUST match the request Accept header (application/graphql+json).[39m
         [31m✗ Response body MUST contain appropriate data (JSON).[39m
+[1m[31m
+Endpoint is non-compliant.
+[22m[39m

@@ -15,6 +15,12 @@ const STATUS_COLORS = {
   error: 'red',
 };
 
+const STATUS_SUMMARIES = {
+  ok: 'compliant',
+  warn: 'compliant with warnings',
+  error: 'non-compliant',
+};
+
 /**
  * Reports the result of an audit in a human readable format either to `stderr`
  * if the root audit has an `error` status, or else to `stdout`. Only intended
@@ -34,4 +40,12 @@ module.exports = function reportAuditResult(auditResult) {
   };
 
   recurse(auditResult);
+
+  reporter.info(
+    kleur
+      .bold()
+      [STATUS_COLORS[auditResult.status]](
+        `\nEndpoint is ${STATUS_SUMMARIES[auditResult.status]}.\n`
+      )
+  );
 };
