@@ -3,23 +3,23 @@
 'use strict';
 
 const isObject = require('isobject');
+const testQuery = require('../testQuery');
 const userAgent = require('../userAgent');
 
 /**
- * Audits if the GraphQL server correctly handles a query with a syntax error.
+ * Audits if the GraphQL server correctly handles a query that’s valid.
  * @kind function
- * @name auditQuerySyntaxError
+ * @name auditQueryValid
  * @param {object} context Audit context.
  * @param {string} context.uri URI to use for the request.
  * @param {string} method HTTP method to use for the request; either `GET` or `POST`.
  * @returns {AuditResult} Audit result.
  * @ignore
  */
-module.exports = async function auditQuerySyntaxError({ uri }, method) {
+module.exports = async function auditQueryValid({ uri }, method) {
   let url = uri;
 
   const acceptContentType = 'application/graphql+json';
-  const query = '{}';
   const fetchOptions = {
     method,
     headers: {
@@ -31,12 +31,12 @@ module.exports = async function auditQuerySyntaxError({ uri }, method) {
   switch (method) {
     case 'GET':
       url = new URL(uri);
-      url.searchParams.append('query', query);
+      url.searchParams.append('query', testQuery);
       break;
 
     case 'POST':
       fetchOptions.headers['Content-Type'] = 'application/json';
-      fetchOptions.body = JSON.stringify({ query });
+      fetchOptions.body = JSON.stringify({ query: testQuery });
       break;
   }
 
@@ -44,8 +44,8 @@ module.exports = async function auditQuerySyntaxError({ uri }, method) {
 
   const children = [
     {
-      description: 'Response HTTP status MUST be 400.',
-      status: response.status === 400 ? 'ok' : 'error',
+      description: 'Response HTTP status MUST be 200.',
+      status: response.status === 200 ? 'ok' : 'error',
     },
     {
       description: `Response Content-Type header MUST match the request Accept header (${acceptContentType}).`,
@@ -66,16 +66,16 @@ module.exports = async function auditQuerySyntaxError({ uri }, method) {
     description: 'Response body MUST contain appropriate data (JSON).',
     status:
       isObject(json) &&
-      Array.isArray(json.errors) &&
-      json.errors.length &&
-      isObject(json.errors[0]) &&
-      typeof json.errors[0].message === 'string'
+      isObject(json.data) &&
+      isObject(json.data.__schema) &&
+      isObject(json.data.__schema.queryType) &&
+      json.data.__schema.queryType.name === 'Query'
         ? 'ok'
         : 'error',
   });
 
   return {
-    description: 'A query with a syntax error MUST have a correct response.',
+    description: 'A query that’s valid MUST have a correct response.',
     status: children.every(({ status }) => status === 'ok') ? 'ok' : 'error',
     children,
   };

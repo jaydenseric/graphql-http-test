@@ -1,0 +1,18 @@
+{
+  "description": "A query with a syntax error MUST have a correct response.",
+  "status": "error",
+  "children": [
+    {
+      "description": "Response HTTP status MUST be 400.",
+      "status": "error"
+    },
+    {
+      "description": "Response Content-Type header MUST match the request Accept header (application/graphql+json).",
+      "status": "error"
+    },
+    {
+      "description": "Response body MUST contain appropriate data (JSON).",
+      "status": "error"
+    }
+  ]
+}

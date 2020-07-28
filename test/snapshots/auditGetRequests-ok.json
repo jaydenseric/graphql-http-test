@@ -3,7 +3,7 @@
   "status": "ok",
   "children": [
     {
-      "description": "A correct GET request MUST have a correct response.",
+      "description": "A query that’s valid MUST have a correct response.",
       "status": "ok",
       "children": [
         {
@@ -11,13 +11,17 @@
           "status": "ok"
         },
         {
-          "description": "Response body MUST contain appropriate JSON.",
+          "description": "Response Content-Type header MUST match the request Accept header (application/graphql+json).",
+          "status": "ok"
+        },
+        {
+          "description": "Response body MUST contain appropriate data (JSON).",
           "status": "ok"
         }
       ]
     },
     {
-      "description": "A query syntax error MUST have a correct response.",
+      "description": "A query with a syntax error MUST have a correct response.",
       "status": "ok",
       "children": [
         {
@@ -25,7 +29,11 @@
           "status": "ok"
         },
         {
-          "description": "Response body MUST contain appropriate JSON.",
+          "description": "Response Content-Type header MUST match the request Accept header (application/graphql+json).",
+          "status": "ok"
+        },
+        {
+          "description": "Response body MUST contain appropriate data (JSON).",
           "status": "ok"
         }
       ]

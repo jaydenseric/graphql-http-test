@@ -3,39 +3,34 @@
 const { createServer } = require('http');
 const { resolve } = require('path');
 const snapshot = require('snapshot-assertion');
-const auditQuerySyntaxError = require('../../../private/audits/auditQuerySyntaxError');
+const auditQueryValid = require('../../../private/audits/auditQueryValid');
 const listen = require('../../listen');
+const testQueryData = require('../../testQueryData');
 
 module.exports = (tests) => {
-  tests.add('`auditQuerySyntaxError` with POST, status ok.', async () => {
+  tests.add('`auditQueryValid` with POST, status ok.', async () => {
     const server = createServer(async (request, response) => {
-      response.writeHead(400, { 'Content-Type': 'application/graphql+json' });
-      response.end(
-        JSON.stringify(
-          { errors: [{ message: 'Query syntax error.' }] },
-          null,
-          2
-        )
-      );
+      response.writeHead(200, { 'Content-Type': 'application/graphql+json' });
+      response.end(JSON.stringify({ data: testQueryData }, null, 2));
     });
 
     const { port, close } = await listen(server);
 
     try {
-      const result = await auditQuerySyntaxError(
+      const result = await auditQueryValid(
         { uri: `http://localhost:${port}` },
         'POST'
       );
       await snapshot(
         JSON.stringify(result, null, 2),
-        resolve(__dirname, '../../snapshots/auditQuerySyntaxError-POST-ok.json')
+        resolve(__dirname, '../../snapshots/auditQueryValid-POST-ok.json')
       );
     } finally {
       close();
     }
   });
 
-  tests.add('`auditQuerySyntaxError` with GET, status error.', async () => {
+  tests.add('`auditQueryValid` with GET, status error.', async () => {
     const server = createServer(async (request, response) => {
       response.statusCode = 404;
       response.end();
@@ -44,23 +39,20 @@ module.exports = (tests) => {
     const { port, close } = await listen(server);
 
     try {
-      const result = await auditQuerySyntaxError(
+      const result = await auditQueryValid(
         { uri: `http://localhost:${port}` },
         'GET'
       );
       await snapshot(
         JSON.stringify(result, null, 2),
-        resolve(
-          __dirname,
-          '../../snapshots/auditQuerySyntaxError-GET-error.json'
-        )
+        resolve(__dirname, '../../snapshots/auditQueryValid-GET-error.json')
       );
     } finally {
       close();
     }
   });
 
-  tests.add('`auditQuerySyntaxError` with POST, status error.', async () => {
+  tests.add('`auditQueryValid` with POST, status error.', async () => {
     const server = createServer(async (request, response) => {
       response.statusCode = 404;
       response.end();
@@ -69,16 +61,13 @@ module.exports = (tests) => {
     const { port, close } = await listen(server);
 
     try {
-      const result = await auditQuerySyntaxError(
+      const result = await auditQueryValid(
         { uri: `http://localhost:${port}` },
         'POST'
       );
       await snapshot(
         JSON.stringify(result, null, 2),
-        resolve(
-          __dirname,
-          '../../snapshots/auditQuerySyntaxError-POST-error.json'
-        )
+        resolve(__dirname, '../../snapshots/auditQueryValid-POST-error.json')
       );
     } finally {
       close();

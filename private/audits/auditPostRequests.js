@@ -1,7 +1,7 @@
 'use strict';
 
-const auditPostRequest = require('./auditPostRequest');
 const auditQuerySyntaxError = require('./auditQuerySyntaxError');
+const auditQueryValid = require('./auditQueryValid');
 
 /**
  * Audits if the GraphQL server supports different types of POST requests.
@@ -14,7 +14,7 @@ const auditQuerySyntaxError = require('./auditQuerySyntaxError');
  */
 module.exports = async function auditPostRequests(context) {
   const children = await Promise.all([
-    auditPostRequest(context),
+    auditQueryValid(context, 'POST'),
     auditQuerySyntaxError(context, 'POST'),
   ]);
 
