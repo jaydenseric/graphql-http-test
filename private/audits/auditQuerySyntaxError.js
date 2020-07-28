@@ -3,6 +3,7 @@
 'use strict';
 
 const isObject = require('isobject');
+const testQuerySyntaxError = require('../testQuerySyntaxError');
 const userAgent = require('../userAgent');
 
 /**
@@ -19,7 +20,6 @@ module.exports = async function auditQuerySyntaxError({ uri }, method) {
   let url = uri;
 
   const acceptContentType = 'application/graphql+json';
-  const query = '{}';
   const fetchOptions = {
     method,
     headers: {
@@ -31,12 +31,12 @@ module.exports = async function auditQuerySyntaxError({ uri }, method) {
   switch (method) {
     case 'GET':
       url = new URL(uri);
-      url.searchParams.append('query', query);
+      url.searchParams.append('query', testQuerySyntaxError);
       break;
 
     case 'POST':
       fetchOptions.headers['Content-Type'] = 'application/json';
-      fetchOptions.body = JSON.stringify({ query });
+      fetchOptions.body = JSON.stringify({ query: testQuerySyntaxError });
       break;
   }
 

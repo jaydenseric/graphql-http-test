@@ -3,7 +3,7 @@
 'use strict';
 
 const isObject = require('isobject');
-const testQuery = require('../testQuery');
+const testQueryValid = require('../testQueryValid');
 const userAgent = require('../userAgent');
 
 /**
@@ -31,12 +31,12 @@ module.exports = async function auditQueryValid({ uri }, method) {
   switch (method) {
     case 'GET':
       url = new URL(uri);
-      url.searchParams.append('query', testQuery);
+      url.searchParams.append('query', testQueryValid);
       break;
 
     case 'POST':
       fetchOptions.headers['Content-Type'] = 'application/json';
-      fetchOptions.body = JSON.stringify({ query: testQuery });
+      fetchOptions.body = JSON.stringify({ query: testQueryValid });
       break;
   }
 

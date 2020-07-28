@@ -4,6 +4,7 @@ const { createServer } = require('http');
 const { resolve } = require('path');
 const snapshot = require('snapshot-assertion');
 const auditGetRequests = require('../../../private/audits/auditGetRequests');
+const testQuerySyntaxError = require('../../../private/testQuerySyntaxError');
 const listen = require('../../listen');
 const testQueryData = require('../../testQueryData');
 
@@ -15,7 +16,7 @@ module.exports = (tests) => {
         `http://${request.headers.host}`
       ).searchParams.get('query');
 
-      if (query === '{}') {
+      if (query === testQuerySyntaxError) {
         response.writeHead(400, { 'Content-Type': 'application/graphql+json' });
         response.end(
           JSON.stringify(
