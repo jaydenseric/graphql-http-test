@@ -1,8 +1,8 @@
 'use strict';
 
-const auditAcceptHeader = require('./auditAcceptHeader');
+const auditAcceptHeaderAbsent = require('./auditAcceptHeaderAbsent');
+const auditAcceptHeaderAcceptable = require('./auditAcceptHeaderAcceptable');
 const auditAcceptHeaderUnacceptable = require('./auditAcceptHeaderUnacceptable');
-const auditNoAcceptHeader = require('./auditNoAcceptHeader');
 const auditQuerySyntaxError = require('./auditQuerySyntaxError');
 
 /**
@@ -16,8 +16,8 @@ const auditQuerySyntaxError = require('./auditQuerySyntaxError');
  */
 module.exports = async function auditGetRequests(context) {
   const children = await Promise.all([
-    auditAcceptHeader(context, 'GET'),
-    auditNoAcceptHeader(context, 'GET'),
+    auditAcceptHeaderAcceptable(context, 'GET'),
+    auditAcceptHeaderAbsent(context, 'GET'),
     auditAcceptHeaderUnacceptable(context, 'GET'),
     auditQuerySyntaxError(context, 'GET'),
   ]);

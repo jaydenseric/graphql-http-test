@@ -8,16 +8,16 @@ const userAgent = require('../userAgent');
 
 /**
  * Audits if the GraphQL server correctly handles a query request with an
- * `Accept` header.
+ * acceptable `Accept` header.
  * @kind function
- * @name auditAcceptHeader
+ * @name auditAcceptHeaderAcceptable
  * @param {object} context Audit context.
  * @param {string} context.uri URI to use for the request.
  * @param {string} method HTTP method to use for the request; either `GET` or `POST`.
  * @returns {AuditResult} Audit result.
  * @ignore
  */
-module.exports = async function auditAcceptHeader({ uri }, method) {
+module.exports = async function auditAcceptHeaderAcceptable({ uri }, method) {
   let url = uri;
 
   const acceptContentType = 'application/graphql+json';
@@ -76,7 +76,7 @@ module.exports = async function auditAcceptHeader({ uri }, method) {
   });
 
   return {
-    description: 'Query request with an Accept header.',
+    description: 'Query request with an acceptable Accept header.',
     status: children.every(({ status }) => status === 'ok') ? 'ok' : 'error',
     children,
   };

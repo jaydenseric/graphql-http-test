@@ -1,5 +1,5 @@
 {
-  "description": "Query request with an Accept header.",
+  "description": "Query request with an absent Accept header.",
   "status": "error",
   "children": [
     {
@@ -7,7 +7,7 @@
       "status": "error"
     },
     {
-      "description": "Response Content-Type header MUST match the request Accept header (application/graphql+json).",
+      "description": "Response Content-Type header MUST be application/graphql+json.",
       "status": "error"
     },
     {

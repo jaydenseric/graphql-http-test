@@ -1,11 +1,11 @@
 [31m✗ GraphQL over HTTP spec compliance.[39m
   [31m✗ GET or POST requests MUST be supported.[39m
     [33m⚠️ GET requests SHOULD be supported.[39m
-      [31m✗ Query request with an Accept header.[39m
+      [31m✗ Query request with an acceptable Accept header.[39m
         [31m✗ Response HTTP status MUST be 200.[39m
         [31m✗ Response Content-Type header MUST match the request Accept header (application/graphql+json).[39m
         [31m✗ Response body MUST contain appropriate data (JSON).[39m
-      [31m✗ Query request without an Accept header.[39m
+      [31m✗ Query request with an absent Accept header.[39m
         [31m✗ Response HTTP status MUST be 200.[39m
         [31m✗ Response Content-Type header MUST be application/graphql+json.[39m
         [31m✗ Response body MUST contain appropriate data (JSON).[39m
@@ -18,11 +18,11 @@
         [31m✗ Response Content-Type header MUST match the request Accept header (application/graphql+json).[39m
         [31m✗ Response body MUST contain appropriate data (JSON).[39m
     [33m⚠️ POST requests SHOULD be supported.[39m
-      [31m✗ Query request with an Accept header.[39m
+      [31m✗ Query request with an acceptable Accept header.[39m
         [31m✗ Response HTTP status MUST be 200.[39m
         [31m✗ Response Content-Type header MUST match the request Accept header (application/graphql+json).[39m
         [31m✗ Response body MUST contain appropriate data (JSON).[39m
-      [31m✗ Query request without an Accept header.[39m
+      [31m✗ Query request with an absent Accept header.[39m
         [31m✗ Response HTTP status MUST be 200.[39m
         [31m✗ Response Content-Type header MUST be application/graphql+json.[39m
         [31m✗ Response body MUST contain appropriate data (JSON).[39m

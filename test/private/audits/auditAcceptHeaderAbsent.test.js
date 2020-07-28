@@ -3,7 +3,7 @@
 const { createServer } = require('http');
 const { resolve } = require('path');
 const snapshot = require('snapshot-assertion');
-const auditNoAcceptHeader = require('../../../private/audits/auditNoAcceptHeader');
+const auditAcceptHeaderAbsent = require('../../../private/audits/auditAcceptHeaderAbsent');
 const listen = require('../../listen');
 const testQueryData = require('../../testQueryData');
 
@@ -18,62 +18,51 @@ const serverError = createServer(async (request, response) => {
 });
 
 module.exports = (tests) => {
-  tests.add('`auditNoAcceptHeader` with GET, status ok.', async () => {
+  tests.add('`auditAcceptHeaderAbsent` with GET, status ok.', async () => {
     const { port, close } = await listen(serverOk);
 
     try {
-      const result = await auditNoAcceptHeader(
+      const result = await auditAcceptHeaderAbsent(
         { uri: `http://localhost:${port}` },
         'GET'
       );
       await snapshot(
         JSON.stringify(result, null, 2),
-        resolve(__dirname, '../../snapshots/auditNoAcceptHeader-GET-ok.json')
+        resolve(
+          __dirname,
+          '../../snapshots/auditAcceptHeaderAbsent-GET-ok.json'
+        )
       );
     } finally {
       close();
     }
   });
 
-  tests.add('`auditNoAcceptHeader` with GET, status error.', async () => {
+  tests.add('`auditAcceptHeaderAbsent` with GET, status error.', async () => {
     const { port, close } = await listen(serverError);
 
     try {
-      const result = await auditNoAcceptHeader(
+      const result = await auditAcceptHeaderAbsent(
         { uri: `http://localhost:${port}` },
         'GET'
       );
       await snapshot(
         JSON.stringify(result, null, 2),
-        resolve(__dirname, '../../snapshots/auditNoAcceptHeader-GET-error.json')
+        resolve(
+          __dirname,
+          '../../snapshots/auditAcceptHeaderAbsent-GET-error.json'
+        )
       );
     } finally {
       close();
     }
   });
 
-  tests.add('`auditNoAcceptHeader` with POST, status ok.', async () => {
+  tests.add('`auditAcceptHeaderAbsent` with POST, status ok.', async () => {
     const { port, close } = await listen(serverOk);
 
     try {
-      const result = await auditNoAcceptHeader(
-        { uri: `http://localhost:${port}` },
-        'POST'
-      );
-      await snapshot(
-        JSON.stringify(result, null, 2),
-        resolve(__dirname, '../../snapshots/auditNoAcceptHeader-POST-ok.json')
-      );
-    } finally {
-      close();
-    }
-  });
-
-  tests.add('`auditNoAcceptHeader` with POST, status error.', async () => {
-    const { port, close } = await listen(serverError);
-
-    try {
-      const result = await auditNoAcceptHeader(
+      const result = await auditAcceptHeaderAbsent(
         { uri: `http://localhost:${port}` },
         'POST'
       );
@@ -81,7 +70,27 @@ module.exports = (tests) => {
         JSON.stringify(result, null, 2),
         resolve(
           __dirname,
-          '../../snapshots/auditNoAcceptHeader-POST-error.json'
+          '../../snapshots/auditAcceptHeaderAbsent-POST-ok.json'
+        )
+      );
+    } finally {
+      close();
+    }
+  });
+
+  tests.add('`auditAcceptHeaderAbsent` with POST, status error.', async () => {
+    const { port, close } = await listen(serverError);
+
+    try {
+      const result = await auditAcceptHeaderAbsent(
+        { uri: `http://localhost:${port}` },
+        'POST'
+      );
+      await snapshot(
+        JSON.stringify(result, null, 2),
+        resolve(
+          __dirname,
+          '../../snapshots/auditAcceptHeaderAbsent-POST-error.json'
         )
       );
     } finally {

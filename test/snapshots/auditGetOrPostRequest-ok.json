@@ -7,7 +7,7 @@
       "status": "ok",
       "children": [
         {
-          "description": "Query request with an Accept header.",
+          "description": "Query request with an acceptable Accept header.",
           "status": "ok",
           "children": [
             {
@@ -25,7 +25,7 @@
           ]
         },
         {
-          "description": "Query request without an Accept header.",
+          "description": "Query request with an absent Accept header.",
           "status": "ok",
           "children": [
             {
@@ -85,7 +85,7 @@
       "status": "ok",
       "children": [
         {
-          "description": "Query request with an Accept header.",
+          "description": "Query request with an acceptable Accept header.",
           "status": "ok",
           "children": [
             {
@@ -103,7 +103,7 @@
           ]
         },
         {
-          "description": "Query request without an Accept header.",
+          "description": "Query request with an absent Accept header.",
           "status": "ok",
           "children": [
             {
