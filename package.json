@@ -1,7 +1,7 @@
 {
   "name": "graphql-http-test",
   "version": "1.0.0-alpha.1",
-  "description": "A JavaScript API and CLI to test a GraphQL server for GraphQL HTTP spec compliance.",
+  "description": "A JavaScript API and CLI to test a GraphQL server for GraphQL over HTTP spec compliance.",
   "license": "MIT",
   "author": {
     "name": "Jayden Seric",

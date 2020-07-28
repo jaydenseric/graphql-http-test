@@ -2,7 +2,7 @@
 
 [![npm version](https://badgen.net/npm/v/graphql-http-test)](https://npm.im/graphql-http-test) [![CI status](https://github.com/jaydenseric/graphql-http-test/workflows/CI/badge.svg)](https://github.com/jaydenseric/graphql-http-test/actions)
 
-A JavaScript [API](#api) and [CLI](#cli) to test a GraphQL server for [GraphQL HTTP spec](https://github.com/APIs-guru/graphql-over-http) compliance.
+A JavaScript [API](#api) and [CLI](#cli) to test a GraphQL server for [GraphQL over HTTP spec](https://github.com/graphql/graphql-over-http) compliance.
 
 ## Setup
 
@@ -23,7 +23,7 @@ Use either the [CLI](#cli) command [`graphql-http-test`](#command-graphql-http-t
 
 ### Command graphql-http-test
 
-The `graphql-http-test` command tests that a GraphQL server at a given URI is [GraphQL HTTP spec](https://github.com/APIs-guru/graphql-over-http) compliant. It outputs test results to `stdout` and `stderror` accordingly, and exits with status `1` if tests failed.
+The `graphql-http-test` command tests that a GraphQL server at a given URI is [GraphQL over HTTP spec](https://github.com/graphql/graphql-over-http) compliant. It outputs test results to `stdout` and `stderror` accordingly, and exits with status `1` if tests failed.
 
 It implements the function [`graphqlHttpTest`](#function-testgraphqlhttp) and has one argument; the GraphQL server URI.
 
@@ -44,7 +44,7 @@ npx graphql-http-test http://localhost:3001/graphql
 
 ### function graphqlHttpTest
 
-Audits that a GraphQL server at a given URI is [GraphQL HTTP spec](https://github.com/APIs-guru/graphql-over-http) compliant.
+Audits that a GraphQL server at a given URI is [GraphQL over HTTP spec](https://github.com/graphql/graphql-over-http) compliant.
 
 | Parameter | Type   | Description         |
 | :-------- | :----- | :------------------ |

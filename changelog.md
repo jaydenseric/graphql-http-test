@@ -26,6 +26,9 @@
 - Removed `*.log` from the `.gitignore` file as npm [v4.2.0](https://github.com/npm/npm/releases/tag/v4.2.0)+ doesn’t create `npm-debug.log` in the current working directory.
 - Simplified the GitHub Actions CI config with the [`npm install-test`](https://docs.npmjs.com/cli/install-test.html) command.
 - Misc. JSDoc fixes and improvements.
+- Updated references to the [GraphQL over HTTP spec](https://github.com/graphql/graphql-over-http):
+  - Consistently use the wording “GraphQL over HTTP spec”.
+  - Update URLs for the new repo.
 
 ## 1.0.0-alpha.1
 

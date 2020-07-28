@@ -3,7 +3,7 @@
 const audit = require('../private/audits');
 
 /**
- * Audits that a GraphQL server at a given URI is [GraphQL HTTP spec](https://github.com/APIs-guru/graphql-over-http)
+ * Audits that a GraphQL server at a given URI is [GraphQL over HTTP spec](https://github.com/graphql/graphql-over-http)
  * compliant.
  * @kind function
  * @name graphqlHttpTest
