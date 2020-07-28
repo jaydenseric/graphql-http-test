@@ -2,9 +2,12 @@
 
 const { Console } = require('console');
 
-/*
- * The `console` API, but all output is to `stderr`. This allows
- * `console.group` to be used with `console.error`.
+/**
+ * The Node.js global `console` API, but all output is to `stderr`.
+ * @kind member
+ * @name errorConsole
+ * @type {Console}
+ * @ignore
  */
 module.exports = new Console({
   stdout: process.stderr,

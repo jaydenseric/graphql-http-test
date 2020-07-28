@@ -10,7 +10,7 @@ exports.reportAuditResult = require('./reportAuditResult');
  * @type {object}
  * @prop {string} description Audit description.
  * @prop {AuditResultStatus} status Audit result status.
- * @prop {AuditResult} [children] Child audit results.
+ * @prop {Array<AuditResult>} [children] Child audit results.
  */
 
 /**

@@ -96,7 +96,7 @@ An audit result.
 | :-- | :-- | :-- |
 | `description` | string | Audit description. |
 | `status` | [AuditResultStatus](#type-auditresultstatus) | Audit result status. |
-| `children` | [AuditResult](#type-auditresult)? | Child audit results. |
+| `children` | Array&lt;[AuditResult](#type-auditresult)>? | Child audit results. |
 
 ---
 
