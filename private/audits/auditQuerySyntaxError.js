@@ -75,7 +75,7 @@ module.exports = async function auditQuerySyntaxError({ uri }, method) {
   });
 
   return {
-    description: 'A query with a syntax error MUST have a correct response.',
+    description: 'Query with a syntax error.',
     status: children.every(({ status }) => status === 'ok') ? 'ok' : 'error',
     children,
   };

@@ -15,7 +15,7 @@ const auditGetOrPostRequest = require('./auditGetOrPostRequest');
 module.exports = async function audit(context) {
   const children = await Promise.all([auditGetOrPostRequest(context)]);
   return {
-    description: 'Full compliance.',
+    description: 'GraphQL over HTTP spec compliance.',
     status: worstAuditResultStatus(children),
     children,
   };

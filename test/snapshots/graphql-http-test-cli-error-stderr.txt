@@ -1,20 +1,20 @@
-[31m✗ Full compliance.[39m
+[31m✗ GraphQL over HTTP spec compliance.[39m
   [31m✗ GET or POST requests MUST be supported.[39m
     [33m⚠️ GET requests SHOULD be supported.[39m
-      [31m✗ A query that’s valid MUST have a correct response.[39m
+      [31m✗ Query that’s valid.[39m
         [31m✗ Response HTTP status MUST be 200.[39m
         [31m✗ Response Content-Type header MUST match the request Accept header (application/graphql+json).[39m
         [31m✗ Response body MUST contain appropriate data (JSON).[39m
-      [31m✗ A query with a syntax error MUST have a correct response.[39m
+      [31m✗ Query with a syntax error.[39m
         [31m✗ Response HTTP status MUST be 400.[39m
         [31m✗ Response Content-Type header MUST match the request Accept header (application/graphql+json).[39m
         [31m✗ Response body MUST contain appropriate data (JSON).[39m
     [33m⚠️ POST requests SHOULD be supported.[39m
-      [31m✗ A query that’s valid MUST have a correct response.[39m
+      [31m✗ Query that’s valid.[39m
         [31m✗ Response HTTP status MUST be 200.[39m
         [31m✗ Response Content-Type header MUST match the request Accept header (application/graphql+json).[39m
         [31m✗ Response body MUST contain appropriate data (JSON).[39m
-      [31m✗ A query with a syntax error MUST have a correct response.[39m
+      [31m✗ Query with a syntax error.[39m
         [31m✗ Response HTTP status MUST be 400.[39m
         [31m✗ Response Content-Type header MUST match the request Accept header (application/graphql+json).[39m
         [31m✗ Response body MUST contain appropriate data (JSON).[39m

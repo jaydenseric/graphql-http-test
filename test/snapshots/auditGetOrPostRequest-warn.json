@@ -7,7 +7,7 @@
       "status": "warn",
       "children": [
         {
-          "description": "A query that’s valid MUST have a correct response.",
+          "description": "Query that’s valid.",
           "status": "error",
           "children": [
             {
@@ -25,7 +25,7 @@
           ]
         },
         {
-          "description": "A query with a syntax error MUST have a correct response.",
+          "description": "Query with a syntax error.",
           "status": "error",
           "children": [
             {
@@ -49,7 +49,7 @@
       "status": "ok",
       "children": [
         {
-          "description": "A query that’s valid MUST have a correct response.",
+          "description": "Query that’s valid.",
           "status": "ok",
           "children": [
             {
@@ -67,7 +67,7 @@
           ]
         },
         {
-          "description": "A query with a syntax error MUST have a correct response.",
+          "description": "Query with a syntax error.",
           "status": "ok",
           "children": [
             {

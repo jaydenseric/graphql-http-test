@@ -1,5 +1,5 @@
 {
-  "description": "A query with a syntax error MUST have a correct response.",
+  "description": "Query with a syntax error.",
   "status": "ok",
   "children": [
     {

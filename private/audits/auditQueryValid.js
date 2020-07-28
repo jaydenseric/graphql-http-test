@@ -75,7 +75,7 @@ module.exports = async function auditQueryValid({ uri }, method) {
   });
 
   return {
-    description: 'A query that’s valid MUST have a correct response.',
+    description: 'Query that’s valid.',
     status: children.every(({ status }) => status === 'ok') ? 'ok' : 'error',
     children,
   };

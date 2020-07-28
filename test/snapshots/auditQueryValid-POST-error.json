@@ -1,5 +1,5 @@
 {
-  "description": "A query that’s valid MUST have a correct response.",
+  "description": "Query that’s valid.",
   "status": "error",
   "children": [
     {
