@@ -7,24 +7,23 @@ const testQueryValid = require('../testQueryValid');
 const userAgent = require('../userAgent');
 
 /**
- * Audits if the GraphQL server correctly handles a query that’s valid.
+ * Audits if the GraphQL server correctly handles a query request without an
+ * `Accept` header.
  * @kind function
- * @name auditQueryValid
+ * @name auditNoAcceptHeader
  * @param {object} context Audit context.
  * @param {string} context.uri URI to use for the request.
  * @param {string} method HTTP method to use for the request; either `GET` or `POST`.
  * @returns {AuditResult} Audit result.
  * @ignore
  */
-module.exports = async function auditQueryValid({ uri }, method) {
+module.exports = async function auditNoAcceptHeader({ uri }, method) {
   let url = uri;
 
-  const acceptContentType = 'application/graphql+json';
   const fetchOptions = {
     method,
     headers: {
       'User-Agent': userAgent,
-      Accept: acceptContentType,
     },
   };
 
@@ -48,9 +47,9 @@ module.exports = async function auditQueryValid({ uri }, method) {
       status: response.status === 200 ? 'ok' : 'error',
     },
     {
-      description: `Response Content-Type header MUST match the request Accept header (${acceptContentType}).`,
+      description: `Response Content-Type header MUST be application/graphql+json.`,
       status:
-        response.headers.get('Content-Type') === acceptContentType
+        response.headers.get('Content-Type') === 'application/graphql+json'
           ? 'ok'
           : 'error',
     },
@@ -75,7 +74,7 @@ module.exports = async function auditQueryValid({ uri }, method) {
   });
 
   return {
-    description: 'Query that’s valid.',
+    description: 'Query request without an Accept header.',
     status: children.every(({ status }) => status === 'ok') ? 'ok' : 'error',
     children,
   };

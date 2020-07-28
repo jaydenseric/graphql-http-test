@@ -7,7 +7,7 @@
       "status": "warn",
       "children": [
         {
-          "description": "Query that’s valid.",
+          "description": "Query request with an Accept header.",
           "status": "error",
           "children": [
             {
@@ -16,6 +16,24 @@
             },
             {
               "description": "Response Content-Type header MUST match the request Accept header (application/graphql+json).",
+              "status": "error"
+            },
+            {
+              "description": "Response body MUST contain appropriate data (JSON).",
+              "status": "error"
+            }
+          ]
+        },
+        {
+          "description": "Query request without an Accept header.",
+          "status": "error",
+          "children": [
+            {
+              "description": "Response HTTP status MUST be 200.",
+              "status": "error"
+            },
+            {
+              "description": "Response Content-Type header MUST be application/graphql+json.",
               "status": "error"
             },
             {
@@ -49,7 +67,7 @@
       "status": "warn",
       "children": [
         {
-          "description": "Query that’s valid.",
+          "description": "Query request with an Accept header.",
           "status": "error",
           "children": [
             {
@@ -58,6 +76,24 @@
             },
             {
               "description": "Response Content-Type header MUST match the request Accept header (application/graphql+json).",
+              "status": "error"
+            },
+            {
+              "description": "Response body MUST contain appropriate data (JSON).",
+              "status": "error"
+            }
+          ]
+        },
+        {
+          "description": "Query request without an Accept header.",
+          "status": "error",
+          "children": [
+            {
+              "description": "Response HTTP status MUST be 200.",
+              "status": "error"
+            },
+            {
+              "description": "Response Content-Type header MUST be application/graphql+json.",
               "status": "error"
             },
             {

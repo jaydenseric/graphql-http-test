@@ -1,7 +1,8 @@
 'use strict';
 
+const auditAcceptHeader = require('./auditAcceptHeader');
+const auditNoAcceptHeader = require('./auditNoAcceptHeader');
 const auditQuerySyntaxError = require('./auditQuerySyntaxError');
-const auditQueryValid = require('./auditQueryValid');
 
 /**
  * Audits if the GraphQL server supports different types of GET requests.
@@ -14,7 +15,8 @@ const auditQueryValid = require('./auditQueryValid');
  */
 module.exports = async function auditGetRequests(context) {
   const children = await Promise.all([
-    auditQueryValid(context, 'GET'),
+    auditAcceptHeader(context, 'GET'),
+    auditNoAcceptHeader(context, 'GET'),
     auditQuerySyntaxError(context, 'GET'),
   ]);
 

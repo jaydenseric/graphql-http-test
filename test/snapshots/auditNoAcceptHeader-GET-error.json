@@ -1,0 +1,18 @@
+{
+  "description": "Query request without an Accept header.",
+  "status": "error",
+  "children": [
+    {
+      "description": "Response HTTP status MUST be 200.",
+      "status": "error"
+    },
+    {
+      "description": "Response Content-Type header MUST be application/graphql+json.",
+      "status": "error"
+    },
+    {
+      "description": "Response body MUST contain appropriate data (JSON).",
+      "status": "error"
+    }
+  ]
+}
