@@ -4,6 +4,7 @@ const { createServer } = require('http');
 const { resolve } = require('path');
 const snapshot = require('snapshot-assertion');
 const auditGetRequests = require('../../../private/audits/auditGetRequests');
+const testAcceptHeaderUnacceptable = require('../../../private/testAcceptHeaderUnacceptable');
 const testQuerySyntaxError = require('../../../private/testQuerySyntaxError');
 const listen = require('../../listen');
 const testQueryData = require('../../testQueryData');
@@ -16,7 +17,14 @@ module.exports = (tests) => {
         `http://${request.headers.host}`
       ).searchParams.get('query');
 
-      if (query === testQuerySyntaxError) {
+      if (request.headers.accept === testAcceptHeaderUnacceptable) {
+        response.writeHead(406, {
+          'Content-Type': 'application/graphql+json',
+        });
+        response.end(
+          JSON.stringify({ errors: [{ message: 'Not acceptable.' }] }, null, 2)
+        );
+      } else if (query === testQuerySyntaxError) {
         response.writeHead(400, { 'Content-Type': 'application/graphql+json' });
         response.end(
           JSON.stringify(

@@ -9,6 +9,10 @@
         [31m✗ Response HTTP status MUST be 200.[39m
         [31m✗ Response Content-Type header MUST be application/graphql+json.[39m
         [31m✗ Response body MUST contain appropriate data (JSON).[39m
+      [31m✗ Query request with an unacceptable Accept header.[39m
+        [31m✗ Response HTTP status MUST be 406.[39m
+        [31m✗ Response Content-Type header MUST be application/graphql+json.[39m
+        [31m✗ Response body MUST contain appropriate data (JSON).[39m
       [31m✗ Query with a syntax error.[39m
         [31m✗ Response HTTP status MUST be 400.[39m
         [31m✗ Response Content-Type header MUST match the request Accept header (application/graphql+json).[39m
@@ -20,6 +24,10 @@
         [31m✗ Response body MUST contain appropriate data (JSON).[39m
       [31m✗ Query request without an Accept header.[39m
         [31m✗ Response HTTP status MUST be 200.[39m
+        [31m✗ Response Content-Type header MUST be application/graphql+json.[39m
+        [31m✗ Response body MUST contain appropriate data (JSON).[39m
+      [31m✗ Query request with an unacceptable Accept header.[39m
+        [31m✗ Response HTTP status MUST be 406.[39m
         [31m✗ Response Content-Type header MUST be application/graphql+json.[39m
         [31m✗ Response body MUST contain appropriate data (JSON).[39m
       [31m✗ Query with a syntax error.[39m

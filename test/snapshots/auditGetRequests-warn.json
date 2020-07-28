@@ -39,6 +39,24 @@
       ]
     },
     {
+      "description": "Query request with an unacceptable Accept header.",
+      "status": "error",
+      "children": [
+        {
+          "description": "Response HTTP status MUST be 406.",
+          "status": "error"
+        },
+        {
+          "description": "Response Content-Type header MUST be application/graphql+json.",
+          "status": "error"
+        },
+        {
+          "description": "Response body MUST contain appropriate data (JSON).",
+          "status": "error"
+        }
+      ]
+    },
+    {
       "description": "Query with a syntax error.",
       "status": "error",
       "children": [
