@@ -7,14 +7,19 @@ const auditQueryValid = require('../../../private/audits/auditQueryValid');
 const listen = require('../../listen');
 const testQueryData = require('../../testQueryData');
 
+const serverOk = createServer(async (request, response) => {
+  response.writeHead(200, { 'Content-Type': 'application/graphql+json' });
+  response.end(JSON.stringify({ data: testQueryData }, null, 2));
+});
+
+const serverError = createServer(async (request, response) => {
+  response.statusCode = 404;
+  response.end();
+});
+
 module.exports = (tests) => {
   tests.add('`auditQueryValid` with GET, status ok.', async () => {
-    const server = createServer(async (request, response) => {
-      response.writeHead(200, { 'Content-Type': 'application/graphql+json' });
-      response.end(JSON.stringify({ data: testQueryData }, null, 2));
-    });
-
-    const { port, close } = await listen(server);
+    const { port, close } = await listen(serverOk);
 
     try {
       const result = await auditQueryValid(
@@ -31,12 +36,7 @@ module.exports = (tests) => {
   });
 
   tests.add('`auditQueryValid` with GET, status error.', async () => {
-    const server = createServer(async (request, response) => {
-      response.statusCode = 404;
-      response.end();
-    });
-
-    const { port, close } = await listen(server);
+    const { port, close } = await listen(serverError);
 
     try {
       const result = await auditQueryValid(
@@ -53,12 +53,7 @@ module.exports = (tests) => {
   });
 
   tests.add('`auditQueryValid` with POST, status ok.', async () => {
-    const server = createServer(async (request, response) => {
-      response.writeHead(200, { 'Content-Type': 'application/graphql+json' });
-      response.end(JSON.stringify({ data: testQueryData }, null, 2));
-    });
-
-    const { port, close } = await listen(server);
+    const { port, close } = await listen(serverOk);
 
     try {
       const result = await auditQueryValid(
@@ -75,12 +70,7 @@ module.exports = (tests) => {
   });
 
   tests.add('`auditQueryValid` with POST, status error.', async () => {
-    const server = createServer(async (request, response) => {
-      response.statusCode = 404;
-      response.end();
-    });
-
-    const { port, close } = await listen(server);
+    const { port, close } = await listen(serverError);
 
     try {
       const result = await auditQueryValid(

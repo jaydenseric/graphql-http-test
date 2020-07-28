@@ -6,20 +6,21 @@ const snapshot = require('snapshot-assertion');
 const auditQuerySyntaxError = require('../../../private/audits/auditQuerySyntaxError');
 const listen = require('../../listen');
 
+const serverOk = createServer(async (request, response) => {
+  response.writeHead(400, { 'Content-Type': 'application/graphql+json' });
+  response.end(
+    JSON.stringify({ errors: [{ message: 'Query syntax error.' }] }, null, 2)
+  );
+});
+
+const serverError = createServer(async (request, response) => {
+  response.statusCode = 404;
+  response.end();
+});
+
 module.exports = (tests) => {
   tests.add('`auditQuerySyntaxError` with GET, status ok.', async () => {
-    const server = createServer(async (request, response) => {
-      response.writeHead(400, { 'Content-Type': 'application/graphql+json' });
-      response.end(
-        JSON.stringify(
-          { errors: [{ message: 'Query syntax error.' }] },
-          null,
-          2
-        )
-      );
-    });
-
-    const { port, close } = await listen(server);
+    const { port, close } = await listen(serverOk);
 
     try {
       const result = await auditQuerySyntaxError(
@@ -36,12 +37,7 @@ module.exports = (tests) => {
   });
 
   tests.add('`auditQuerySyntaxError` with GET, status error.', async () => {
-    const server = createServer(async (request, response) => {
-      response.statusCode = 404;
-      response.end();
-    });
-
-    const { port, close } = await listen(server);
+    const { port, close } = await listen(serverError);
 
     try {
       const result = await auditQuerySyntaxError(
@@ -61,18 +57,7 @@ module.exports = (tests) => {
   });
 
   tests.add('`auditQuerySyntaxError` with POST, status ok.', async () => {
-    const server = createServer(async (request, response) => {
-      response.writeHead(400, { 'Content-Type': 'application/graphql+json' });
-      response.end(
-        JSON.stringify(
-          { errors: [{ message: 'Query syntax error.' }] },
-          null,
-          2
-        )
-      );
-    });
-
-    const { port, close } = await listen(server);
+    const { port, close } = await listen(serverOk);
 
     try {
       const result = await auditQuerySyntaxError(
@@ -89,12 +74,7 @@ module.exports = (tests) => {
   });
 
   tests.add('`auditQuerySyntaxError` with POST, status error.', async () => {
-    const server = createServer(async (request, response) => {
-      response.statusCode = 404;
-      response.end();
-    });
-
-    const { port, close } = await listen(server);
+    const { port, close } = await listen(serverError);
 
     try {
       const result = await auditQuerySyntaxError(
