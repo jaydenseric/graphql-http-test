@@ -84,6 +84,28 @@ Reports the result of an audit in a human readable format either to `stderr` if 
 | :------------ | :------------------------------- | :--------------- |
 | `auditResult` | [AuditResult](#type-auditresult) | An audit result. |
 
+#### Examples
+
+_Ways to `import`._
+
+> ```js
+> import { reportAuditResult } from 'graphql-http-test';
+> ```
+>
+> ```js
+> import reportAuditResult from 'graphql-http-test/public/reportAuditResult.js';
+> ```
+
+_Ways to `require`._
+
+> ```js
+> const { reportAuditResult } = require('graphql-http-test');
+> ```
+>
+> ```js
+> const reportAuditResult = require('graphql-http-test/public/reportAuditResult');
+> ```
+
 ---
 
 ### type AuditResult

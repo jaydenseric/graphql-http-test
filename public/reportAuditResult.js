@@ -28,6 +28,22 @@ const STATUS_SUMMARIES = {
  * @kind function
  * @name reportAuditResult
  * @param {AuditResult} auditResult An audit result.
+ * @example <caption>Ways to `import`.</caption>
+ * ```js
+ * import { reportAuditResult } from 'graphql-http-test';
+ * ```
+ *
+ * ```js
+ * import reportAuditResult from 'graphql-http-test/public/reportAuditResult.js';
+ * ```
+ * @example <caption>Ways to `require`.</caption>
+ * ```js
+ * const { reportAuditResult } = require('graphql-http-test');
+ * ```
+ *
+ * ```js
+ * const reportAuditResult = require('graphql-http-test/public/reportAuditResult');
+ * ```
  */
 module.exports = function reportAuditResult(auditResult) {
   const reporter = auditResult.status === 'error' ? errorConsole : console;
