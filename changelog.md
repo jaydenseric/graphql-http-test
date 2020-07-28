@@ -24,6 +24,7 @@
 - Snapshot `stdout` and `stderr` as `.txt` instead of `.json`.
 - Assert exit code after `stdout` and `stderr` for easier test failure diagnosis.
 - Removed `*.log` from the `.gitignore` file as npm [v4.2.0](https://github.com/npm/npm/releases/tag/v4.2.0)+ doesn’t create `npm-debug.log` in the current working directory.
+- Simplified the GitHub Actions CI config with the [`npm install-test`](https://docs.npmjs.com/cli/install-test.html) command.
 
 ## 1.0.0-alpha.1
 
